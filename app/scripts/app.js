@@ -32,6 +32,16 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/add-a-resource', {
+        templateUrl: 'views/add-a-resource.html',
+        controller: 'resourceCtrl',
+        controllerAs: 'about'
+      })
+      .when('/user-profile', {
+        templateUrl: 'views/user-profile.html',
+        controller: 'userCtrl',
+        controllerAs: 'about'
+      })
       .otherwise({
         redirectTo: '/'
       });

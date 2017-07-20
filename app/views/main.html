@@ -3,16 +3,25 @@
 <div ng-controller="MainCtrl as vm">
 
 
-  <ng-map class="map" default-style="false" center="seattle" on-center-changed="vm.centerChanged()">
+  <ng-map class="map" default-style="false" center="seattle"
+   on-center-changed="vm.centerChanged()" map-type-control="false">
 
           <custom-control class="searchControl searchInput" position="TOP_CENTER">
-            <h2>Find Current Shelters</h2>
+            <h2 class="text-center">Resource Finder</h2>
 
             <input places-auto-complete size=80
               ng-model="vm.address"
               component-restrictions="{country:'us'}"
               on-place-changed="vm.placeChanged()"
              />
+          </custom-control>
+
+          <custom-control position="TOP_RIGHT">
+              <div><h1>User Profile</h1></div>
+          </custom-control>
+
+          <custom-control position="TOP_LEFT">
+                <div><h1>Add a resource</h1></div>
           </custom-control>
 
   </ng-map>  <!--  close map   -->

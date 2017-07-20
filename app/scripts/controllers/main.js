@@ -25,15 +25,15 @@ vm.placeChanged = function() {
    vm.map = map;
   });
 
-  vm.centerChanged = function(event) {
-    vm.pauseLoading=true;
-    $timeout(function() {
+  vm.centerChanged = function() {
 
-      vm.pauseLoading=false;
+
+
+
 
       vm.home = vm.map.getCenter();
-    
-    }, 1000);
+
+  
       };
 
 
