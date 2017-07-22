@@ -23,18 +23,13 @@ vm.placeChanged = function() {
 //  get map function
   NgMap.getMap().then(function(map) {
    vm.map = map;
+   vm.centerChanged = function() {
+
+       vm.home = vm.map.getCenter();
+       };
   });
 
-  vm.centerChanged = function() {
 
-
-
-
-
-      vm.home = vm.map.getCenter();
-
-  
-      };
 
 
 });  //close controller

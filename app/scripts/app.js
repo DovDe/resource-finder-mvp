@@ -10,6 +10,7 @@
  */
 angular
   .module('resourceFinderMvpApp', [
+    'ui.router',
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -20,29 +21,12 @@ angular
     'ngTouch',
     'ngMap'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .when('/add-a-resource', {
-        templateUrl: 'views/add-a-resource.html',
-        controller: 'resourceCtrl',
-        controllerAs: 'about'
-      })
-      .when('/user-profile', {
-        templateUrl: 'views/user-profile.html',
-        controller: 'userCtrl',
-        controllerAs: 'about'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+  .config(['$urlRouteProvider','$stateProvider', function ($urlRouteProvider ,$stateProvider) {
+      $urlRouteProvider.otherwise('/');
+
+      $stateProvider.state('home', {
+            url: '/',
+            templateUrl: '/views/main.html'
+          });
+
+  }]);

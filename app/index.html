@@ -13,7 +13,7 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-    
+
     <!--googlemaps API with key!-->
      <script src="http://maps.google.com/maps/api/js?key=AIzaSyD7YjbLtUlWB6hn-VeTBJEhdch7sCOJVO0&libraries=places,visualization,drawing,geometry"></script>
    <!--  end googlemaps  !-->
@@ -23,9 +23,7 @@
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-    <div ng-view="">
-    </div>
+    <div ui-view></div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -43,6 +41,7 @@
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
@@ -61,8 +60,11 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/services/current.js"></script>
-        <script src="scripts/services/user-profile.js"></script>
+        <script src="scripts/controllers/current.js"></script>
         <script src="scripts/services/add-a-resource.js"></script>
+        <script src="scripts/controllers/add-a-resource.js"></script>
+        <script src="scripts/services/user-profile.js"></script>
+        <script src="scripts/controllers/user-profile.js"></script>
         <!-- endbuild -->
 </body>
 </html>

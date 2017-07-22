@@ -27,3 +27,19 @@ ng-map{
   height:100%;
   position: absolute;
 }
+
+ng-view{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  top:0;
+  background: white;
+}
+// custom-control{
+//   width: 100%;
+//   height: 100%;
+//   margin: 0;
+//   padding: 0;
+// }
