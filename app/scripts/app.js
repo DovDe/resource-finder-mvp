@@ -21,12 +21,12 @@ angular
     'ngTouch',
     'ngMap'
   ])
-  .config(['$stateProvider', function ($stateProvider) {
-
-      $stateProvider.state('main', {
-            url: '/',
-            templateUrl: '/views/main.html',
+  .config(function ($stateProvider, $urlRouterProvider) {
+ $stateProvider
+ .state('main',{
+            url: '/main',
+            templateUrl: '/main.html',
             controller: 'MainCtrl'
-          });
-
-  }]);
+          })
+$urlRouterProvider.otherwise('/main.html');
+  })
