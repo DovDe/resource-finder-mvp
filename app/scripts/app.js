@@ -21,12 +21,14 @@ angular
     'ngTouch',
     'ngMap'
   ])
-  .config(function ($stateProvider, $urlRouterProvider) {
- $stateProvider
- .state('main',{
-            url: '/main',
-            templateUrl: '/main.html',
-            controller: 'MainCtrl'
-          })
-$urlRouterProvider.otherwise('/main.html');
-  })
+  .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider)  {
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+    .state( 'user-profile',{
+      url: '/user-profile',
+      templateUrl: 'views/user-profile.html',
+      controller: 'UserProfileCtrl'
+    })
+
+  }]);
