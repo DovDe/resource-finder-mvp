@@ -8,6 +8,9 @@
  * Controller of the resourceFinderMvpApp
  */
 angular.module('resourceFinderMvpApp')
+
   .controller('UserProfileCtrl', function () {
-  
+  //   $scope.$on('$stateChangeSuccess', function () {
+  //   // do something
+  // });
   });

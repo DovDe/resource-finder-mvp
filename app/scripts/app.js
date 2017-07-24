@@ -30,5 +30,10 @@ angular
       templateUrl: 'views/user-profile.html',
       controller: 'UserProfileCtrl'
     })
+    .state( 'add-a-resource',{
+      url: '/add-a-resource',
+      templateUrl: 'views/add-a-resource.html',
+      controller: 'AddAResourceCtrl'
+    })
 
   }]);
