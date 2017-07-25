@@ -40,6 +40,6 @@ angular
       templateUrl: 'views/main.html',
       controller: 'MainCtrl as vm'
     })
-
+  
 
   }]);
