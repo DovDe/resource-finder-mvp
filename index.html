@@ -25,8 +25,9 @@
        on-center-changed="vm.centerChanged()" map-type-control="false">
 
               <custom-control class="searchControl searchInput" position="TOP_CENTER">
-                <h1 class="text-center">Resource Finder</h1>
-
+                <a ui-sref="user-profile">
+                    <h1>Home</h1>
+                    </a>
                 <input places-auto-complete size=80
                   ng-model="vm.address"
                   component-restrictions="{country:'us'}"
@@ -35,11 +36,21 @@
               </custom-control>
 
               <custom-control position="TOP_RIGHT">
-                <a ui-sref="user-profile">User Profile</a>
+                <a ui-sref="user-profile">
+                    <h1>User Profile</h1>
+                    </a>
+              </custom-control>
+              <custom-control position="TOP_LEFT">
+                <a ui-sref="add-a-resource">
+                    <h1>Add A Resource</h1>
+                    </a>
               </custom-control>
 
+
+
+              <custom-control position="BOTTOM">
                 <div ui-view></div>
-            
+              </custom-control>
 
       </ng-map>  <!--  close map   -->
 
