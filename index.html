@@ -20,7 +20,7 @@
     <![endif]-->
 
 
-  
+
 
 
     <div ui-view>
@@ -40,6 +40,20 @@
     </script> -->
 
     <script src="scripts/vendor.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBTKtvlGnXa12bjI_hqTOO6vrW_xN8pQkw",
+        authDomain: "resource-finder-166820.firebaseapp.com",
+        databaseURL: "https://resource-finder-166820.firebaseio.com",
+        projectId: "resource-finder-166820",
+        storageBucket: "resource-finder-166820.appspot.com",
+        messagingSenderId: "784561398300"
+      };
+      firebase.initializeApp(config);
+    </script>
 
         <script src="scripts/scripts.js"></script>
 </body>
