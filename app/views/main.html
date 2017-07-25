@@ -1,23 +1,31 @@
+
 <div ng-controller="MainCtrl as vm">
-
-
   <ng-map class="map" default-style="false" center="seattle"
-   on-center-changed="vm.centerChanged()" map-type-control="false">
+    on-center-changed="vm.centerChanged()" map-type-control="false">
 
-          <custom-control class="searchControl searchInput" position="TOP_CENTER">
-            <h1 class="text-center">Resource Finder</h1>
+           <custom-control class="searchControl searchInput" position="TOP_CENTER">
+             <a ui-sref="main">
+                 <h1>Home</h1>
+                 </a>
+             <input places-auto-complete size=80
+               ng-model="vm.address"
+               component-restrictions="{country:'us'}"
+               on-place-changed="vm.placeChanged()"
+              />
+           </custom-control>
 
-            <input places-auto-complete size=80
-              ng-model="vm.address"
-              component-restrictions="{country:'us'}"
-              on-place-changed="vm.placeChanged()"
-             />
-          </custom-control>
+           <custom-control position="TOP_RIGHT">
+             <a ui-sref="user-profile">
+                 <h1>User Profile</h1>
+                 </a>
+           </custom-control>
+           <custom-control position="TOP_LEFT">
+             <a ui-sref="add-a-resource">
+                 <h1>Add A Resource</h1>
+                 </a>
+           </custom-control>
 
 
+   </ng-map>      <!-- close map -->
 
-
-  </ng-map>  <!--  close map   -->
-
-
-</div>     <!--close controller -->
+</div>

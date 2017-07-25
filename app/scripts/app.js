@@ -22,7 +22,7 @@ angular
     'ngMap'
   ])
   .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider)  {
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/main');
 
     $stateProvider
     .state( 'user-profile',{
@@ -35,5 +35,14 @@ angular
       templateUrl: 'views/add-a-resource.html',
       controller: 'AddAResourceCtrl'
     })
+    .state( 'main',{
+      url: '/main',
+      templateUrl: 'views/main.html',
+      controller: 'MainCtrl'
+    })
+    // .state( 'home',{
+    //   url: '/',
+    //   templateUrl: '/index.html',
+    // })
 
   }]);

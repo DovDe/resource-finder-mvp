@@ -23,47 +23,15 @@
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div ng-controller="MainCtrl as vm">
 
 
-      <ng-map class="map" default-style="false" center="seattle"
-       on-center-changed="vm.centerChanged()" map-type-control="false">
-
-              <custom-control class="searchControl searchInput" position="TOP_CENTER">
-                <a ui-sref="user-profile">
-                    <h1>Home</h1>
-                    </a>
-                <input places-auto-complete size=80
-                  ng-model="vm.address"
-                  component-restrictions="{country:'us'}"
-                  on-place-changed="vm.placeChanged()"
-                 />
-              </custom-control>
-
-              <custom-control position="TOP_RIGHT">
-                <a ui-sref="user-profile">
-                    <h1>User Profile</h1>
-                    </a>
-              </custom-control>
-              <custom-control position="TOP_LEFT">
-                <a ui-sref="add-a-resource">
-                    <h1>Add A Resource</h1>
-                    </a>
-              </custom-control>
+  
 
 
+    <div ui-view>
 
-              <custom-control position="BOTTOM">
-                <div ui-view></div>
-              </custom-control>
-
-      </ng-map>  <!--  close map   -->
-
-
-    </div>     <!--close controller -->
-
-
-
+    </div>
+   <!--close controller -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <!-- <script>
