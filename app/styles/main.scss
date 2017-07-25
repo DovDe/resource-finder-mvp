@@ -1,5 +1,9 @@
+
 // bower:scss
+
 // endbower
+
+@import 'forms';
 
 html{
   margin: 0;
@@ -43,3 +47,16 @@ ng-view{
 //   margin: 0;
 //   padding: 0;
 // }
+
+input.ng-invalid.ng-touched {
+  border: 1px solid #DA3637;
+}
+input.ng-valid.ng-touched {
+  border: 1px solid #509D12;
+}
+
+.error {
+  color: red;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}

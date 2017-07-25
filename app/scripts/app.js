@@ -28,7 +28,7 @@ angular
     .state( 'user-profile',{
       url: '/user-profile',
       templateUrl: 'views/user-profile.html',
-      controller: 'UserProfileCtrl'
+      controller: 'UserProfileCtrl as vm'
     })
     .state( 'add-a-resource',{
       url: '/add-a-resource',
@@ -38,11 +38,8 @@ angular
     .state( 'main',{
       url: '/main',
       templateUrl: 'views/main.html',
-      controller: 'MainCtrl'
+      controller: 'MainCtrl as vm'
     })
-    // .state( 'home',{
-    //   url: '/',
-    //   templateUrl: '/index.html',
-    // })
+
 
   }]);

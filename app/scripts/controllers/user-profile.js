@@ -10,7 +10,9 @@
 angular.module('resourceFinderMvpApp')
 
   .controller('UserProfileCtrl', function () {
-  //   $scope.$on('$stateChangeSuccess', function () {
-  //   // do something
-  // });
+        var vm = this;
+
+        vm.register = function() {
+        vm.message = vm.user.username;
+        };
   });
