@@ -1,4 +1,8 @@
 <div ng-controller="UserProfileCtrl as vm">
+
+
+
+
   <div id='user-profile'>
         <a ui-sref="main">
             <h1>Home</h1>
@@ -9,7 +13,7 @@
   </div>
 
 
-  <form name="userLogin"
+  <!-- <form name="userLogin"
    ng-submit="login()"
    novalidate>
 
@@ -43,7 +47,65 @@
   </form>
 
   <p>or <a ui-sref='user-profile-signup.html'>signup</a></p>
-<div ui-view></div>
+-->
+
+<form name="signup"
+ ng-submit="vm.register(user.email , user.password)"
+ novalidate>
+
+  <div class="text-intro">
+        <h1>Register</h1>      
+        <p ng-show="message">{{message}}</p>
+  </div>
 
 
-</div>
+  <fieldset>
+
+    <input type="text" name="username"
+          placeholder="User Name"
+          ng-model="user.username"
+          ng-required="true">
+      <p class="error validationError"ng-show="signup.username.$invalid && signup.username.$touched">
+        Please fill out your user name</p>
+
+
+        <input type="text" name="firstname"
+              placeholder="First Name"
+              ng-model="user.firstname"
+              ng-required="true">
+        <p class="error validationError"ng-show="signup.firstname.$invalid && signup.firstname.$touched">
+          Please fill out your first name</p>
+
+
+        <input type="text"
+              name="lastname"  placeholder="Last Name"
+              ng-model="user.lastname"
+              ng-required="true">
+
+          <p class="error validationError"ng-show="signup.lastname.$invalid && signup.lastname.$touched">
+            Please fill out your last name</p>
+
+
+        <input type="email"
+              name="email"
+              placeholder="Email"
+              ng-model="user.email"
+              ng-required="true">
+          <p ng-show="signup.email.$invalid && signup.email.$touched" class="error validationError">
+            Please fill out a valid email</p>
+
+        <input type="password"
+             name="password" placeholder="Password"
+             ng-model="user.password"
+             ng-required="true"
+             ng-minlength="6">
+         <p class="error validationError"ng-show="signup.password.$invalid && signup.password.$touched">
+           The password must be at least six characters</p>
+
+  </fieldset>
+
+  <button type="submit" ng-disabled="signup.$invalid" class="btn">Submit</button>
+</form>
+
+
+</div>  <!-- close controller   -->

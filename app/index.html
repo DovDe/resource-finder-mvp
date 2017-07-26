@@ -59,23 +59,24 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-    <script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyBTKtvlGnXa12bjI_hqTOO6vrW_xN8pQkw",
-        authDomain: "resource-finder-166820.firebaseapp.com",
-        databaseURL: "https://resource-finder-166820.firebaseio.com",
-        projectId: "resource-finder-166820",
-        storageBucket: "resource-finder-166820.appspot.com",
-        messagingSenderId: "784561398300"
-      };
-      firebase.initializeApp(config);
-    </script>
 
+    <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyBTKtvlGnXa12bjI_hqTOO6vrW_xN8pQkw",
+      authDomain: "resource-finder-166820.firebaseapp.com",
+      databaseURL: "https://resource-finder-166820.firebaseio.com",
+      projectId: "resource-finder-166820",
+      storageBucket: "resource-finder-166820.appspot.com",
+      messagingSenderId: "784561398300"
+    };
+    firebase.initializeApp(config);
+    </script>
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
@@ -86,6 +87,7 @@
         <script src="scripts/controllers/add-a-resource.js"></script>
         <script src="scripts/services/user-profile.js"></script>
         <script src="scripts/controllers/user-profile.js"></script>
+        <script src="scripts/services/authentication.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -9,10 +9,27 @@
  */
 angular.module('resourceFinderMvpApp')
 
-  .controller('UserProfileCtrl', function () {
+  .controller('UserProfileCtrl', function (authentication) {
         var vm = this;
 
-        vm.register = function() {
-        vm.message = vm.user.username;
+        vm.login= function(email, password){
+          let user = {
+            email: email,
+            password: password
+          }
+          authentication.login(user);
+
+
         };
-  });
+
+        vm.register= function(email, password){
+          let user = {
+            email: email,
+            password: password
+          }
+          authentication.register(user);
+
+        };
+
+
+  }); //controller

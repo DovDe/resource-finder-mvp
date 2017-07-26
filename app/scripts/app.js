@@ -19,10 +19,11 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngMap'
+    'ngMap',
+    'firebase'
   ])
   .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider)  {
-    $urlRouterProvider.otherwise('/main');
+      $urlRouterProvider.otherwise('/main');
 
     $stateProvider
     .state( 'user-profile',{
@@ -40,6 +41,6 @@ angular
       templateUrl: 'views/main.html',
       controller: 'MainCtrl as vm'
     })
-  
+
 
   }]);
