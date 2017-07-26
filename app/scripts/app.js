@@ -24,7 +24,6 @@ angular
   ])
   .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider)  {
       $urlRouterProvider.otherwise('/main');
-
     $stateProvider
     .state( 'user-profile',{
       url: '/user-profile',
@@ -40,7 +39,5 @@ angular
       url: '/main',
       templateUrl: 'views/main.html',
       controller: 'MainCtrl as vm'
-    })
-
-
+    });
   }]);
