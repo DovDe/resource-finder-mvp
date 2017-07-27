@@ -15,6 +15,10 @@ angular.module('resourceFinderMvpApp')
               authentication.login($scope.user);
         };
 
+        $scope.logout= function(){
+              authentication.logout();
+        };
+
         $scope.register= function(){
             authentication.register($scope.user);
         };//register

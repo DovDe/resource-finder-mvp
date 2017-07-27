@@ -8,12 +8,22 @@
  * Factory in the resourceFinderMvpApp.
  */
 angular.module('resourceFinderMvpApp')
-  .factory('authentication', function ( $rootScope, $location, $firebaseAuth) {
+  .factory('authentication', function ( $rootScope, $location, $firebaseAuth, $firebaseObject) {
     // Service logic
     // ...
     //
     var ref= firebase.database().ref();
     var auth= $firebaseAuth();
+
+      auth.$onAuthStateChanged(function(authUser){
+           if (authUser){
+              var userRef = ref.child('users').child(authUser.uid);
+              var userObj = $firebaseObject(userRef);
+              $rootScope.currentUser = userObj;
+           }else {
+             $rootScope.currentUser = '';
+           }
+      });
 
     // Public API here
     return {
@@ -27,6 +37,10 @@ angular.module('resourceFinderMvpApp')
             $rootScope.message = error.message;
           }); //  signInWithEmailAndPassword
          }, //login
+
+         logout: function(){
+            return auth.$signOut();
+         }, // logout
          register: function(user){
 
                    // firebase authentication

@@ -41,7 +41,7 @@ angular
       controller: 'MainCtrl as vm'
     })
     .state( 'user-profile.register',{
-      url: '/user-profile.regiser',
+      url: '/user-profile.register',
       templateUrl: 'views/user-profile.register.html',
       controller: 'UserProfileCtrl'
     })
