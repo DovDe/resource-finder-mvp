@@ -22,6 +22,7 @@ angular
     'ngMap',
     'firebase'
   ])
+
   .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider)  {
       $urlRouterProvider.otherwise('/main');
     $stateProvider
@@ -33,7 +34,15 @@ angular
     .state( 'add-a-resource',{
       url: '/add-a-resource',
       templateUrl: 'views/add-a-resource.html',
-      controller: 'AddAResourceCtrl'
+      controller: 'AddAResourceCtrl',
+      resolve:{
+
+         // Example using function with simple return value.
+         // Since it's not a promise, it resolves immediately.
+         currentAuth:  function(authentication){
+            return authentication.requireAuth();
+         } // currentAuth
+      }  //  resolve
     })
     .state( 'main',{
       url: '/main',
@@ -51,3 +60,6 @@ angular
       controller: 'UserProfileCtrl'
     });
   }]);
+
+//   $rootScope.$on('$stateChangeError',
+// function(event, toState, toParams, fromState, fromParams, error){ ... })
