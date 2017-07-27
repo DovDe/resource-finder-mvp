@@ -28,7 +28,7 @@ angular
     .state( 'user-profile',{
       url: '/user-profile',
       templateUrl: 'views/user-profile.html',
-      controller: 'UserProfileCtrl as vm'
+      controller: 'UserProfileCtrl'
     })
     .state( 'add-a-resource',{
       url: '/add-a-resource',
