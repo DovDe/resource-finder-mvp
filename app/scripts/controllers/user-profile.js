@@ -11,27 +11,12 @@ angular.module('resourceFinderMvpApp')
 
   .controller('UserProfileCtrl', function ($scope, authentication) {
 
-    // console.log($scope.user);
-        // var ref= firebase.database().ref();
-        // var auth= $firebaseAuth();
-
         $scope.login= function(){
-          // let user = {
-          //   email: email,
-          //   password: password
-          // };
-          authentication.login($scope.user);
-
-
+              authentication.login($scope.user);
         };
 
         $scope.register= function(){
-          // let user = {
-          //   email: email,
-          //   password: password
-          // };
-          authentication.register($scope.user);
-
+            authentication.register($scope.user);
         };//register
 
 

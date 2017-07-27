@@ -15,10 +15,13 @@ angular.module('resourceFinderMvpApp')
     var ref= firebase.database().ref();
     var auth= $firebaseAuth();
 
-    console.log($rootScope.user);
     // Public API here
     return {
       login: function(user) {
+          // auth.signInWithEmailAndPassword(
+          //   user.email,
+          //   user.password
+          // ).then
            $rootScope.message = "welcome" + $rootScope.user.email;
          }, //login
          register: function(user){
@@ -28,7 +31,18 @@ angular.module('resourceFinderMvpApp')
                          user.email,
                          user.password
                        ).then(function(regUser)  {
-                         $rootScope.message = "Hi" + user.email + ",Thanks for registering";
+                         var regRef = ref.child('users')
+                              .child(regUser.uid).set({
+                                date: firebase.database.ServerValue.TIMESTAMP,
+                                regUser: regUser.uid,
+                               username:  user.username,
+                                firstname: user.firstname,
+                                lastname: user.lastname,
+                                email: user.email,
+                                password: user.password
+
+                              });  //user info
+                         $rootScope.message = "Hi" + user.firstname + ",Thanks for registering";
                        }).catch(function(error){
                          $rootScope.message = error.message;
                        }); //createUserWithEmailAndPassword
