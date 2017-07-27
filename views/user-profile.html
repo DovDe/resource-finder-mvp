@@ -22,15 +22,17 @@ I will keep both in the main section  untill I figure it out
 
                <div class="text-intro">
                      <h1>Login</h1>
+                     <p ng-show="message">{{message}}</p>
                </div>
 
 
                <fieldset>
-                         <input type="text" name="username" placeholder="User Name" ng-model="user.username"
+                         <input type="email" name="emial" placeholder="Email" ng-model="user.email"
                                ng-required="true">
 
-                               <p class="error validationError" ng-show="userLogin.username.$invalid && userLogin.username.$touched">
-                               Please fill out your user name</p>
+                               <p class="error validationError"
+                               ng-show="userLogin.email.$invalid && userLogin.email.$touched">
+                               Please fill out a proper email address</p>
 
 
                          <input type="password"
