@@ -17,7 +17,8 @@ I will keep both in the main section  untill I figure it out
 
        -->
 
-
+       <h3 ng-show="currentUser">Hi {{currentUser.firstname}}</h3>
+       <a ng-show="currentUser" ng-click="logout()">Logout</a>
        <form name="userLogin"  ng-submit="login()" novalidate>
 
                <div class="text-intro">
