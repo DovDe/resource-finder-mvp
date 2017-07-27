@@ -8,7 +8,7 @@
  * Factory in the resourceFinderMvpApp.
  */
 angular.module('resourceFinderMvpApp')
-  .factory('authentication', function ( $rootScope, $firebaseAuth) {
+  .factory('authentication', function ( $rootScope, $location, $firebaseAuth) {
     // Service logic
     // ...
     //
@@ -18,11 +18,14 @@ angular.module('resourceFinderMvpApp')
     // Public API here
     return {
       login: function(user) {
-          // auth.signInWithEmailAndPassword(
-          //   user.email,
-          //   user.password
-          // ).then
-           $rootScope.message = "welcome" + $rootScope.user.email;
+          auth.$signInWithEmailAndPassword(
+            user.email,
+            user.password
+          ).then(function(user){
+            $location.path('/main');
+          }).catch(function(error){
+            $rootScope.message = error.message;
+          }); //  signInWithEmailAndPassword
          }, //login
          register: function(user){
 
