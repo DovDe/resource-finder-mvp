@@ -1,4 +1,5 @@
 <div ng-controller="AddAResourceCtrl">
+
   <div id='resourcePage'>
         <a ui-sref="main">
             <h1>Home</h1>
@@ -7,4 +8,32 @@
             <h1>User Profile</h1>
         </a>
   </div>
+
+  <form class="" name="addAResource" ng-submit="addResource()"  novalidate>
+          <div class="inputWrapper">
+                <select name="resourceType" ng-required="true" ng-model="type">
+                        <option value="shlter">Shelter</option>
+                        <option value="water">Water</option>
+                        <option value="food">Food</option>
+                        <option value="electricity">Electricity</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="cleanup">Cleanup</option>
+                </select>
+
+                <input type="text" name="resourcename" ng-model="resourcename"
+                 ng-required="true" placeholder="Resource Name">
+
+                <input type="text" name="resourcelocation" ng-model="resourcelocation"
+                 ng-required="true" placeholder="Location">
+
+                <input type="url" name="resourcewebsite" ng-model="resourcewebsite"
+                 ng-required="false" placeholder="Website">
+
+                <input type="text" name="resourcehours" ng-model="resourcehours"
+                 ng-required="false" placeholder="Hours Open">
+
+          </div>
+          <button type="submit" class="btn" ng-disabled="addAResource.$invalid">Submit Resource</button>
+  </form>
+
 </div>
