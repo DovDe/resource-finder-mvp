@@ -20,9 +20,20 @@
                         <option value="cleanup">Cleanup</option>
                 </select>
 
-                <input type="text" name="resourcename" ng-model="resourcename" ng-required="true" placeholder="Resource Name">
-          </div>
+                <input type="text" name="resourcename" ng-model="resourcename"
+                 ng-required="true" placeholder="Resource Name">
 
+                <input type="text" name="resourcelocation" ng-model="resourcelocation"
+                 ng-required="true" placeholder="Location">
+
+                <input type="url" name="resourcewebsite" ng-model="resourcewebsite"
+                 ng-required="false" placeholder="Website">
+
+                <input type="text" name="resourcehours" ng-model="resourcehours"
+                 ng-required="false" placeholder="Hours Open">
+
+          </div>
+          <button type="submit" class="btn" ng-disabled="addAResource.$invalid">Submit Resource</button>
   </form>
 
 </div>
