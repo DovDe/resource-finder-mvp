@@ -57,7 +57,7 @@ angular.module('resourceFinderMvpApp')
                                 .child(regUser.uid).set({
                                   date: firebase.database.ServerValue.TIMESTAMP,
                                   regUser: regUser.uid,
-                                 username:  user.username,
+                                  username:  user.username,
                                   firstname: user.firstname,
                                   lastname: user.lastname,
                                   email: user.email,
