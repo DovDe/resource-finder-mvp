@@ -8,7 +8,7 @@
  * Controller of the resourceFinderMvpApp
  */
 angular.module('resourceFinderMvpApp')
-  .controller('AddAResourceCtrl', function ($firebaseAuth, $firebaseArray, $firebaseObject, $scope) {
+  .controller('AddAResourceCtrl', function ($firebase, $firebaseAuth, $firebaseArray, $firebaseObject, $scope) {
     // get resources
     var ref= firebase.database().ref();
     // get authentication
@@ -29,9 +29,7 @@ angular.module('resourceFinderMvpApp')
 
                  }
 
-               }).then(function(){
-                   $scope.resourceInfo='';
-               }); // close then promise
+               })
 
              };  //close addResource
        }  //auth user
