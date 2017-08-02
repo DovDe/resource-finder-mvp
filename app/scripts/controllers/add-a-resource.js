@@ -8,11 +8,18 @@
  * Controller of the resourceFinderMvpApp
  */
 angular.module('resourceFinderMvpApp')
-  .controller('AddAResourceCtrl', function ($firebase, $firebaseAuth, $firebaseArray, $firebaseObject, $scope, $rootScope) {
+  .controller('AddAResourceCtrl', function ($firebase, $firebaseAuth, $firebaseArray, $firebaseObject, $scope, $rootScope, $location, $state) {
     // get resources
     var ref= firebase.database().ref();
     // get authentication
     var auth= $firebaseAuth();
+
+    // $scope.changeResourceType = function($state){
+    //     var resourceType =  $scope.resource.type;
+    //     console.log(resourceType);
+    //     // $state.includes(states.shelter);
+    //
+    // };
 
 
 // check to see if user is authenticated
@@ -23,17 +30,14 @@ angular.module('resourceFinderMvpApp')
                 var resourceInfo = $firebaseArray(resourceRef);
                 $rootScope.resource = resourceInfo;
 
-             $scope.addResource = function(resource) {
-               resourceInfo.$add({
-                 resource : {
-                   name: $scope.resource.name,
-                   date: firebase.database.ServerValue.TIMESTAMP,
-                   type: $rootScope.resource.type
-
-                 }
-               }); //close resourceInfo
-
-             };  //close addResource
+            //  $scope.addResource = function(resource) {
+            //    resourceInfo.$add({
+            //        name: $scope.resource.name,
+            //        date: firebase.database.ServerValue.TIMESTAMP,
+            //        type: $rootScope.resource.type
+            //    }); //close resourceInfo
+             //
+            //  };  //close addResource
        }  //auth user
      }); // onAuthStateChanged
 
