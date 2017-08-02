@@ -1,7 +1,8 @@
 
 <div ng-controller="MainCtrl as vm">
   <ng-map class="map" default-style="false" center="seattle"
-    on-center-changed="vm.centerChanged()" map-type-control="false">
+    on-center-changed="vm.centerChanged()" map-type-control="false"
+    on-click="vm.placeMarker()">
 
            <custom-control class="searchControl searchInput" position="TOP_CENTER">
              <a ui-sref="main">
@@ -27,7 +28,14 @@
                  </a>
            </custom-control>
 
+           <info-window id="add-a-resource"  position="{{lat}},{{lng}}">
+              <div>
+                <div ui-view="add-a-resource">
+                   
+                </div>
+                <h1>info window</h1>
+                  <p>hello</p>
+              </div>
+          </info-window>
 
    </ng-map>      <!-- close map -->
-
-</div>
