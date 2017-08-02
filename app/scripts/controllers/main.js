@@ -40,9 +40,8 @@ angular.module('resourceFinderMvpApp')
                       $rootScope.lng = vm.home.lng();
 
                       vm.map.showInfoWindow("add-a-resource");
-                      // vm.template = {
-                      //     add-a-resource: 'add-a-resource.html'
-                      //   };
+
+                      $state.transitionTo('main.add-a-resource');
 
                       // $state.go("add-a-resource");
           } ;   // close placeMarker

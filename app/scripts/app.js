@@ -31,6 +31,11 @@ angular
       templateUrl: 'views/user-profile.html',
       controller: 'UserProfileCtrl'
     })
+    .state( 'main',{
+      url: '/main',
+      templateUrl: 'views/main.html',
+      controller: 'MainCtrl as vm'
+    })
     .state( 'add-a-resource',{
       url: '/add-a-resource',
       templateUrl: 'views/add-a-resource.html',
@@ -42,11 +47,6 @@ angular
          } // currentAuth
       }  //  resolve
     })
-    .state( 'main',{
-      url: '/main',
-      templateUrl: 'views/main.html',
-      controller: 'MainCtrl as vm'
-    })
     .state( 'user-profile.register',{
       url: '/user-profile.register',
       templateUrl: 'views/user-profile.register.html',
@@ -57,7 +57,8 @@ angular
       templateUrl: 'views/user-profile.login.html',
       controller: 'UserProfileCtrl'
     });
-    
+
+
   }]);
 
 //   $rootScope.$on('$stateChangeError',
