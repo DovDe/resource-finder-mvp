@@ -33,19 +33,40 @@ angular
     })
     .state( 'main',{
       url: '/main',
-      templateUrl: 'views/main.html',
-      controller: 'MainCtrl as vm'
+            views:{
+              '':{
+                templateUrl:'views/main.html',
+                controller: 'MainCtrl as vm'
+              },
+              'new-resource': {
+                templateUrl: 'views/add-a-resource.html',
+                controller: 'AddAResourceCtrl',
+                resolve:{
+                   // Since it's not a promise, it resolves immediately.
+                   currentAuth:  function(authentication){
+                      return authentication.requireAuth();
+                   } // currentAuth
+                },  //  resol
+              }
+      }
+
     })
-    .state( 'add-a-resource',{
-      url: '/add-a-resource',
-      templateUrl: 'views/add-a-resource.html',
-      controller: 'AddAResourceCtrl',
+    .state( 'main.add-a-resource',{
+      url: 'main/add-a-resource',
       resolve:{
          // Since it's not a promise, it resolves immediately.
          currentAuth:  function(authentication){
             return authentication.requireAuth();
          } // currentAuth
-      }  //  resolve
+      },  //  resolve
+      views: {
+          'new-resource': {
+            templateUrl: 'views/add-a-resource.html',
+            controller: 'AddAResourceCtrl'
+          }
+      }
+
+
     })
     .state( 'user-profile.register',{
       url: '/user-profile.register',
