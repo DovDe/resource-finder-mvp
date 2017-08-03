@@ -4,6 +4,7 @@
 // endbower
 
 @import 'forms';
+@import "infoWindow";
 
 html{
   margin: 0;
@@ -61,18 +62,8 @@ input.ng-valid.ng-touched {
   padding-top: 10px;
 }
 
-.ng-map-info-window {
-    // background-color: navy;
-    color: #fff;
-    width: 500px;
-  }
-
-  .ng-map-info-window div:first-child > div:nth-child(1) {
-    border-top-color: navy !important;
-  }
-  .ng-map-info-window div:first-child > div:nth-child(3) div {
-    background-color: transparent !important;
-  }
-  .ng-map-info-window div:first-child > div:nth-child(4) {
-    background-color: transparent !important;
-  }
+// .ng-map-info-window {
+//     background-color: lightgrey;
+//     color: #fff;
+//     width: 1000px;
+//   }

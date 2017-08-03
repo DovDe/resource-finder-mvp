@@ -31,7 +31,6 @@ angular.module('resourceFinderMvpApp')
               }); //close getMap
 
 
-
               vm.placeMarker = function(e) {
                       var marker = new google.maps.Marker({position: e.latLng, map: vm.map});
                       vm.map.panTo(e.latLng);
@@ -39,11 +38,9 @@ angular.module('resourceFinderMvpApp')
                       $rootScope.lat = vm.home.lat();
                       $rootScope.lng = vm.home.lng();
 
-                      vm.map.showInfoWindow("add-a-resource");
 
-                      $state.transitionTo('main.add-a-resource');
+                      vm.map.showInfoWindow("t");
 
-                      // $state.go("add-a-resource");
           } ;   // close placeMarker
 
 
