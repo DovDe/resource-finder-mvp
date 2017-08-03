@@ -1,5 +1,6 @@
 
 <div ng-controller="MainCtrl as vm">
+
   <ng-map class="map" default-style="false" center="seattle"
     on-center-changed="vm.centerChanged()" map-type-control="false"
     on-click="vm.placeMarker()">
@@ -28,13 +29,9 @@
                  </a>
            </custom-control>
 
-           <info-window id="add-a-resource"  position="{{lat}},{{lng}}">
-              <div>
-              <h1>Info Window</h1>
-              <div ui-view="add-a-resource">
-
-              </div>
-              </div>
-          </info-window>
-
+           <info-window id="t" position="{{lat}},{{lng}}" maxWidth="500px">
+                     <div ng-non-bindable>
+                     <div ui-view="add-a-resource"></div>
+                    </div>
+            </info-window>
    </ng-map>      <!-- close map -->
