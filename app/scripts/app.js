@@ -25,6 +25,8 @@ angular
 
   .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider)  {
       $urlRouterProvider.otherwise('/main');
+
+
     $stateProvider
     .state( 'user-profile',{
       url: '/user-profile',
@@ -40,33 +42,15 @@ angular
               },
               'new-resource': {
                 templateUrl: 'views/add-a-resource.html',
-                controller: 'AddAResourceCtrl',
-                resolve:{
-                   // Since it's not a promise, it resolves immediately.
-                   currentAuth:  function(authentication){
-                      return authentication.requireAuth();
-                   } // currentAuth
-                },  //  resol
+                controller: 'AddAResourceCtrl'
+                // resolve:{
+                //    // Since it's not a promise, it resolves immediately.
+                //    currentAuth:  function(authentication){
+                //       return authentication.requireAuth();
+                //    } // currentAuth
+                // }  //  resol
               }
       }
-
-    })
-    .state( 'main.add-a-resource',{
-      url: 'main/add-a-resource',
-      resolve:{
-         // Since it's not a promise, it resolves immediately.
-         currentAuth:  function(authentication){
-            return authentication.requireAuth();
-         } // currentAuth
-      },  //  resolve
-      views: {
-          'new-resource': {
-            templateUrl: 'views/add-a-resource.html',
-            controller: 'AddAResourceCtrl'
-          }
-      }
-
-
     })
     .state( 'user-profile.register',{
       url: '/user-profile.register',
@@ -78,6 +62,22 @@ angular
       templateUrl: 'views/user-profile.login.html',
       controller: 'UserProfileCtrl'
     });
+    // .state( 'main.add-a-resource',{
+    //   url: 'main/add-a-resource',
+    //   resolve:{
+    //      // Since it's not a promise, it resolves immediately.
+    //      currentAuth:  function(authentication){
+    //         return authentication.requireAuth();
+    //      } // currentAuth
+    //   },  //  resolve
+    //   views: {
+    //       'new-resource': {
+    //         templateUrl: 'views/add-a-resource.html',
+    //         controller: 'AddAResourceCtrl'
+    //       }
+    //   }
+    // });
+
 
 
   }]);
