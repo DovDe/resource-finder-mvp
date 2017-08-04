@@ -1,7 +1,7 @@
-<div ng-controller="AddAResourceCtrl">
+<div ng-controller="AddAResourceCtrl" id="highindex">
 
-
-    <select name="chooseResourceType" ng-required="true" ng-model="resource.type" ng-change="changeResourceType()" novalidate>
+    <select name="chooseResourceType" ng-required="true" ng-model="resource.type"
+     ng-change="changeResourceType()" novalidate>
             <option value="shelter">Shelter</option>
             <option value="water">Water</option>
             <option value="food">Food</option>
@@ -9,7 +9,5 @@
             <option value="clothing">Clothing</option>
             <option value="cleanup">Cleanup</option>
     </select>
-
-
 
 </div>
