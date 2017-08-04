@@ -29,18 +29,32 @@
                    </a>
              </custom-control>
 
-             <info-window id="info-window" position="{{lat}},{{lng}}" >
+             <!-- <info-window id="info-window" position="{{lat}},{{lng}}">
                        <div>
-                         <div class="">
-                            <p ng-click="vm.addnewresource()">click here to add a resource</p>
-                         </div>
-                      </div>
-              </info-window>
+                                <div class="">
+                                  <p ng-click="vm.addnewresource()">click here to add a resource</p>
+
+                                </div>
+                        <div>
+              </info-window> -->
+              <custom-marker id="customthings" position="{{lat}},{{lng}}" on-click="vm.closeCustomMarker()">
+                <div class="">
+                  <p ng-click="vm.addnewresource()">click here to add a resource</p>
+
+                </div>
+          </custom-marker>
+
      </ng-map>      <!-- close map -->
 
-  <div ng-show="vm.addingResource" id="new-resources">
-            <h1>Add a Resource</h1>
-          <div ui-view='new-resource'></div>
-          </div>
+
+         <div  ng-show="vm.addingResource" >
+                <div id="new-resources" >
+                        <div ui-view='new-resource'>
+
+                        </div>
+                </div>
+         </div>
+
+
 
   </div>

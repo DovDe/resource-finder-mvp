@@ -38,12 +38,33 @@ angular.module('resourceFinderMvpApp')
                       vm.home = vm.map.getCenter();
                       $rootScope.lat = vm.home.lat();
                       $rootScope.lng = vm.home.lng();
-                      vm.map.showInfoWindow("info-window");
+
+
+// info-window method
+                      // vm.map.showInfoWindow("info-window");
+
+
+//  custom marker method
+                      vm.showCustomMarker= function(evt) {
+        vm.map.customMarkers.customthings.setVisible(true);
+        //  vm.map.customMarkers.custom.setPosition(this.getPosition());
+        console.log('whatever');
+      };
+       vm.closeCustomMarker= function(evt) {
+         this.style.display = 'none';
+       };
+
+                  vm.showCustomMarker();
+
+
+
+
+
           } ;   // close placeMarker
 
           vm.addnewresource = function() {
                   vm.addingResource = true;
-                  // console.log('whatever');
+                  console.log('whatever');
           };
 
 
