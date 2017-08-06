@@ -28,6 +28,7 @@ angular.module('resourceFinderMvpApp')
                                      if (results[1]) {
                                        console.log(results[1].formatted_address);
                                          $rootScope.NewResourceAddress= results[1].formatted_address;
+                                         console.log($rootScope.NewResourceAddress);
                                        // map.setZoom(11);
                                        // var marker = new google.maps.Marker({
                                        //   position: latlng,
