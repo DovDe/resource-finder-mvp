@@ -1,40 +1,61 @@
 <div ng-controller="AddAResourceCtrl">
-
-     <form class="" name="addAShelterResource" ng-submit="addResource()"  novalidate>
-             <div class="inputWrapper">
-
-               <fieldset>
-
-                 <div class="resourceType">
-                   <h2>Resource Type</h2>
-                   <p>Shelter <input type="checkbox" name="resourceTypeShelter"ng-model="resource.type.shelter"><p>
-                   <p>Water <input type="checkbox" name="resourceTypeWater"ng-model="resource.type.water"></p>
-                   <p>Food <input type="checkbox" name="resourceTypeFood"ng-model="resource.type.food"></p>
-                   <p>Electricity <input type="checkbox" name="resourceTypeElectricity"ng-model="resource.type.electricity"></p>
-                   <p>Clothing <input type="checkbox" name="resourceTypeClothing"ng-model="resource.type.clothing"></p>
-                   <p>Clean up <input type="checkbox" name="resourceTypeCleanup"ng-model="resource.type.cleanup"></p>
-                 </div>
-
-                 <input type="text" name="resourcename" ng-model="resource.type.name"
-                  ng-required="true" placeholder="Resource Name">
+    <div class="container">
+          <div class="row">
+            <h1>Add A Resource</h1>
 
 
+            <p>{{resourceaddress}}</p>
+            <p>{{resourcelat}}</p>
+            <p>{{resourcelng}}</p>
 
-                     <input type="text" name="resourcelocation" ng-model="resource.type.location"
-                      ng-required="true" placeholder="Location">
+            <a ui-sref="main">Main</a>
+            <form name="addAShelterResource" ng-submit="addResource()"  novalidate>
 
-                     <input type="url" name="resourcewebsite" ng-model="resource.type.website"
-                      ng-required="false" placeholder="Website">
 
-                     <input type="text" name="resourcehours" ng-model="resource.type.hours"
-                      ng-required="false" placeholder="Hours Open">
+                             <fieldset>
 
-                      <textarea name="resourcedescription" rows="8" cols="100"
-                       ng-model="resource.type.description" ng-required="false">Description</textarea>
+                               <div class="resourceType col-lg-3">
+                                 <h3>Resource Type</h3>
+                                 <p>Shelter <input type="checkbox" name="resourceTypeShelter"ng-model="resource.type.shelter"><p>
+                                 <p>Water <input type="checkbox" name="resourceTypeWater"ng-model="resource.type.water"></p>
+                                 <p>Food <input type="checkbox" name="resourceTypeFood"ng-model="resource.type.food"></p>
+                                 <p>Electricity <input type="checkbox" name="resourceTypeElectricity"ng-model="resource.type.electricity"></p>
+                                 <p>Clothing <input type="checkbox" name="resourceTypeClothing"ng-model="resource.type.clothing"></p>
+                                 <p>Clean up <input type="checkbox" name="resourceTypeCleanup"ng-model="resource.type.cleanup"></p>
+                               </div>
 
-               </fieldset>
+                               <div class="col-lg-3">
+                                 <h3>Resource Name</h3>
+                                 <input type="text" name="resourcename" ng-model="resource.name"
+                                  ng-required="true" placeholder="Resource Name">
 
-             </div>
-             <!-- <button type="submit" class="btn" ng-disabled="addAResource.$invalid">Submit Resource</button> -->
-     </form>
-</div>
+                               </div>
+
+                               <div class="col-lg-3">
+                                 <h3>Resource Website</h3>
+                                 <input type="url" name="resourcewebsite" ng-model="resource.website"
+                                      ng-required="false" placeholder="Website">
+                               </div>
+
+                               <div class="col-lg-3">
+                                 <h3>Resource Hours</h3>
+                                 <input type="text" name="resourcehours" ng-model="resource.hours"
+                                      ng-required="false" placeholder="Hours Open">
+                               </div>
+
+                               <div class="col-lg-12">
+                                 <h3>Resource Description</h3>
+                                 <textarea name="resourcedescription" rows="8" cols="100"
+                                      ng-model="resource.description" ng-required="false">Description</textarea>
+                               </div>
+
+
+                             </fieldset>
+
+
+                           <button type="submit" class="btn" ng-disabled="addAResource.$invalid">Submit Resource</button>
+               </form>
+                      <h2 class='col-lg-12 success-message'>{{message}}</h2>
+          </div>   <!--close row    -->
+      </div> <!--close container    -->
+</div>  <!--close controller  -->
