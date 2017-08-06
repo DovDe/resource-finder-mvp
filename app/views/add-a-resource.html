@@ -14,7 +14,7 @@
 
                              <fieldset>
 
-                               <div class="resourceType col-lg-3">
+                               <div class="resourceType col-lg-3 text-left">
                                  <h3>Resource Type</h3>
                                  <p>Shelter <input type="checkbox" name="resourceTypeShelter"ng-model="resource.type.shelter"><p>
                                  <p>Water <input type="checkbox" name="resourceTypeWater"ng-model="resource.type.water"></p>
@@ -24,28 +24,31 @@
                                  <p>Clean up <input type="checkbox" name="resourceTypeCleanup"ng-model="resource.type.cleanup"></p>
                                </div>
 
-                               <div class="col-lg-3">
-                                 <h3>Resource Name</h3>
-                                 <input type="text" name="resourcename" ng-model="resource.name"
-                                  ng-required="true" placeholder="Resource Name">
+                               <div class="col-lg-3 text-left">
+                                       <div class="col-lg-12 ">
+                                         <h3>Resource Name</h3>
+                                         <input type="text" name="resourcename" ng-model="resource.name"
+                                          ng-required="true" placeholder="Resource Name">
 
+                                       </div>
+
+                                       <div class="col-lg-12">
+                                         <h3>Resource Website</h3>
+                                         <input type="url" name="resourcewebsite" ng-model="resource.website"
+                                              ng-required="false" placeholder="Website">
+                                       </div>
+
+                                       <div class="col-lg-12">
+                                         <h3>Resource Hours</h3>
+                                         <input type="text" name="resourcehours" ng-model="resource.hours"
+                                              ng-required="false" placeholder="Hours Open">
+                                       </div>
                                </div>
 
-                               <div class="col-lg-3">
-                                 <h3>Resource Website</h3>
-                                 <input type="url" name="resourcewebsite" ng-model="resource.website"
-                                      ng-required="false" placeholder="Website">
-                               </div>
 
-                               <div class="col-lg-3">
-                                 <h3>Resource Hours</h3>
-                                 <input type="text" name="resourcehours" ng-model="resource.hours"
-                                      ng-required="false" placeholder="Hours Open">
-                               </div>
-
-                               <div class="col-lg-12">
+                               <div class="col-lg-6">
                                  <h3>Resource Description</h3>
-                                 <textarea name="resourcedescription" rows="8" cols="100"
+                                 <textarea name="resourcedescription" rows="8" cols="50"
                                       ng-model="resource.description" ng-required="false">Description</textarea>
                                </div>
 
