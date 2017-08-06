@@ -10,62 +10,119 @@
 
 
 angular.module('resourceFinderMvpApp')
-.controller('MainCtrl', function(NgMap, $scope, $state, $rootScope) {
-            var vm = this;
-            vm.addingResource = false;
-
-            // places changed function
-            vm.placeChanged = function() {
-              vm.place = this.getPlace();
-              // console.log('location', vm.place.geometry.location);
-              vm.map.setCenter(vm.place.geometry.location);
-            };  // close placeChanged
+.controller('MainCtrl', function(NgMap, $scope, $state, $rootScope, $timeout) {
+              var vm = this;
+              vm.addingResource =false;
+              vm.hideinput = false;
+              vm.inProgress = false;
 
 
-
-            //  get map function
-              NgMap.getMap().then(function(map) {
-               vm.map = map;
-               vm.centerChanged = function() {
-                   vm.home = vm.map.getCenter();
-                   };
-              }); //close getMap
-
-
-              vm.placeMarker = function(e) {
-                      var marker = new google.maps.Marker({position: e.latLng, map: vm.map});
-                      vm.map.panTo(e.latLng);
-                      vm.home = vm.map.getCenter();
-                      $rootScope.lat = vm.home.lat();
-                      $rootScope.lng = vm.home.lng();
-
-
-// info-window method
-                      // vm.map.showInfoWindow("info-window");
-
-
-//  custom marker method
-                      vm.showCustomMarker= function(evt) {
-        vm.map.customMarkers.customthings.setVisible(true);
-        //  vm.map.customMarkers.custom.setPosition(this.getPosition());
-        console.log('whatever');
-      };
-       vm.closeCustomMarker= function(evt) {
-         this.style.display = 'none';
-       };
-
-                  vm.showCustomMarker();
+           //   geocoding to get address from lat lng
+                    var geocoder = new google.maps.Geocoder;
+                     function geocodeLatLng(geocoder, map) {
+                                 var input = document.getElementById('latlng').value;
+                                 var latlngStr = input.split(',', 2);
+                                 var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+                                 geocoder.geocode({'location': latlng}, function(results, status) {
+                                   if (status === 'OK') {
+                                     if (results[1]) {
+                                       console.log(results[1].formatted_address);
+                                         $rootScope.NewResourceAddress= results[1].formatted_address;
+                                       // map.setZoom(11);
+                                       // var marker = new google.maps.Marker({
+                                       //   position: latlng,
+                                       //   map: map
+                                       // });
+                                       // infowindow.setContent(results[1].formatted_address);
+                                       // infowindow.open(map, marker);
+                                     } else {
+                                       window.alert('No results found');
+                                     }
+                                   } else {
+                                     window.alert('Geocoder failed due to: ' + status);
+                                   }
+                                 });
+                     }   // close geocodeLatLng
 
 
 
 
+              // places changed function
+              vm.placeChanged = function() {
+                      vm.place = this.getPlace();
+                      vm.map.setCenter(vm.place.geometry.location);
+              };  // close placeChanged
 
-          } ;   // close placeMarker
 
-          vm.addnewresource = function() {
-                  vm.addingResource = true;
-                  console.log('whatever');
-          };
+
+              //  get map function
+                NgMap.getMap().then(function(map) {
+                         vm.map = map;
+                         vm.home = vm.map.getCenter();
+                         $rootScope.currentMarkerLat = vm.home.lat();
+                         $rootScope.currentMarkerLng = vm.home.lng();
+                         var markerstringvalue = $rootScope.currentMarkerLat.toString()+","+$rootScope.currentMarkerLng.toString();
+                         vm.currentMarkerValue = markerstringvalue
+
+                 vm.centerChanged = function() {
+                     vm.home = vm.map.getCenter();
+                     };
+                }); //close getMap
+
+
+                vm.placeMarker = function(e) {
+
+                        if (vm.inProgress){
+                            return;
+                        }else {
+
+                            var marker = new google.maps.Marker({position: e.latLng, map: vm.map});
+                            vm.map.panTo(e.latLng);
+
+                            vm.home = vm.map.getCenter();
+                            $rootScope.currentMarkerLat = vm.home.lat();
+                            $rootScope.currentMarkerLng = vm.home.lng();
+
+                            var markerstringvalue = $rootScope.currentMarkerLat.toString()+","+$rootScope.currentMarkerLng.toString();
+                            vm.currentMarkerValue = markerstringvalue;
+
+                            console.log(markerstringvalue);
+                            //  show custom marker method
+                            vm.showCustomMarker= function(evt) {
+                                      vm.map.customMarkers.customthings.setVisible(true);
+                                       vm.map.customMarkers.customthings.setPosition(vm.home);
+                            };  // close showCustomMarker
+
+                            vm.showCustomMarker();
+
+                            // disable maps onclick
+                            vm.inProgress = true;
+
+                      }  // close else
+                      geocodeLatLng(geocoder, map);
+                } ;   // close placeMarker
+
+
+
+                vm.addnewresource = function() {
+                        vm.addingResource = true;
+                };
+
+
+
+
+
+                // close custom marker function
+                vm.closeCustomMarker= function(evt) {
+                           vm.map.customMarkers.customthings.setVisible(false);
+                };
+
+                // re-enable onclick after 300mls
+                  vm.reAble=  function(){
+                      $timeout(function(){
+                              vm.inProgress = false;
+                       },300);  // close timeout
+                }; // close vm.reAble
 
 
 });  //close controller

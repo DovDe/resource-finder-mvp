@@ -3,57 +3,69 @@
 
   <ng-map class="map" default-style="false" center="seattle"
       on-center-changed="vm.centerChanged()" map-type-control="false"
-      on-click="vm.placeMarker()">
+      on-click="vm.placeMarker()" ng-disabled="inProgress"
+    id="map">
 
-             <custom-control class="searchControl searchInput" position="TOP_CENTER">
-               <a ui-sref="main">
-                   <h1>Home</h1>
-                   </a>
-                   <h3 ng-show="currentUser"> Hi {{currentUser.firstname}} <a ui-sref="user-profile" ng-click="logout()">Logout</a></h3>
+        <custom-control class="searchControl searchInput" position="TOP_CENTER">
+          <a ui-sref="main">
+              <h1>Home</h1>
+              </a>
+              <h3 ng-show="currentUser"> Hi {{currentUser.firstname}} <a ui-sref="user-profile" ng-click="logout()">Logout</a></h3>
 
-               <input places-auto-complete size=80
-                 ng-model="vm.address"
-                 component-restrictions="{country:'us'}"
-                 on-place-changed="vm.placeChanged()"
-                />
-             </custom-control>
+          <input places-auto-complete size=80
+            ng-model="vm.address"
+            component-restrictions="{country:'us'}"
+            on-place-changed="vm.placeChanged()"
+           />
+        </custom-control>
 
-             <custom-control position="TOP_RIGHT">
-               <a ui-sref="user-profile">
-                   <h1>User Profile</h1>
-                   </a>
-             </custom-control>
-             <custom-control ng-show = "currentUser" position="TOP_LEFT">
-               <a ui-sref="add-a-resource">
-                   <h1>Add A Resource</h1>
-                   </a>
-             </custom-control>
+        <custom-control position="TOP_RIGHT">
 
-             <!-- <info-window id="info-window" position="{{lat}},{{lng}}">
-                       <div>
-                                <div class="">
-                                  <p ng-click="vm.addnewresource()">click here to add a resource</p>
 
-                                </div>
-                        <div>
-              </info-window> -->
-              <custom-marker id="customthings" position="{{lat}},{{lng}}" on-click="vm.closeCustomMarker()">
-                <div class="">
-                  <p ng-click="vm.addnewresource()">click here to add a resource</p>
+          <a ui-sref="user-profile">
+              <h1>User Profile</h1>
+              </a>
+        </custom-control>
+        <custom-control ng-show = "currentUser" position="TOP_LEFT">
+          <a ui-sref="add-a-resource">
+              <h1>Add A Resource</h1>
+              </a>
+        </custom-control>
 
-                </div>
-          </custom-marker>
+        <custom-control position="TOP_LEFT">
+          <div id="floating-panel">
+          <input id="latlng" type="text" value="40.714224,-73.961452"
+           ng-model="vm.currentMarkerValue" ng-show="vm.hideinput">
+          <!-- <input id="submit" type="button" value="Reverse Geocode" > -->
+          </div>
+        </custom-control>
+
+
+        <!-- <info-window id="info-window" position="{{Lat}},{{Lng}}"    ng-click="vm.addnewresource()">
+          <div ng-non-bindable>
+            <a  ui-sref="add-a-resource">
+
+
+             click here to add a resource
+            </a>
+           </div>
+
+         </info-window> -->
+
+          <custom-marker id="customthings" position="{{lat}},{{lng}}" >
+                           <div class="custom-marker-innerdiv">
+                             <p ng-click="vm.closeCustomMarker(); vm.reAble() ">X</p>
+                           </div>
+                             <div class="custom-marker-innerdiv">
+                               <a ui-sref="add-a-resource">click here to add a resource</a>
+
+                             </div>
+                       </custom-marker>
+
+
 
      </ng-map>      <!-- close map -->
 
-
-         <div  ng-show="vm.addingResource" >
-                <div id="new-resources" >
-                        <div ui-view='new-resource'>
-
-                        </div>
-                </div>
-         </div>
 
 
 

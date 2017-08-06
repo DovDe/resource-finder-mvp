@@ -42,13 +42,13 @@ angular
               },
               'new-resource': {
                 templateUrl: 'views/add-a-resource.html',
-                controller: 'AddAResourceCtrl'
-                // resolve:{
-                //    // Since it's not a promise, it resolves immediately.
-                //    currentAuth:  function(authentication){
-                //       return authentication.requireAuth();
-                //    } // currentAuth
-                // }  //  resol
+                controller: 'AddAResourceCtrl',
+                resolve:{
+                   // Since it's not a promise, it resolves immediately.
+                   currentAuth:  function(authentication){
+                      return authentication.requireAuth();
+                   } // currentAuth
+                }  //  resol
               }
       }
     })
@@ -61,22 +61,23 @@ angular
       url: '/user-profile.login',
       templateUrl: 'views/user-profile.login.html',
       controller: 'UserProfileCtrl'
+    })
+    .state( 'add-a-resource',{
+      url: '/add-a-resource',
+      resolve:{
+         // Since it's not a promise, it resolves immediately.
+         currentAuth:  function(authentication){
+            return authentication.requireAuth();
+         } // currentAuth
+      },  //  resolve
+      views: {
+          '': {
+            templateUrl: 'views/add-a-resource.html',
+            controller: 'AddAResourceCtrl'
+          }
+
+      }
     });
-    // .state( 'main.add-a-resource',{
-    //   url: 'main/add-a-resource',
-    //   resolve:{
-    //      // Since it's not a promise, it resolves immediately.
-    //      currentAuth:  function(authentication){
-    //         return authentication.requireAuth();
-    //      } // currentAuth
-    //   },  //  resolve
-    //   views: {
-    //       'new-resource': {
-    //         templateUrl: 'views/add-a-resource.html',
-    //         controller: 'AddAResourceCtrl'
-    //       }
-    //   }
-    // });
 
 
 

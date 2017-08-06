@@ -41,4 +41,5 @@ angular.module('resourceFinderMvpApp')
        }  //auth user
      }); // onAuthStateChanged
 
-  });  //controller
+
+    });  //controller
