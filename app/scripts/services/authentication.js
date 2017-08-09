@@ -35,7 +35,7 @@ angular.module('resourceFinderMvpApp')
             ).then(function(user){
               $location.path('/main');
             }).catch(function(error){
-              $rootScope.message = error.message;
+              $rootScope.message = "error.message";
             }); //  signInWithEmailAndPassword
            }, //login
 
@@ -46,6 +46,9 @@ angular.module('resourceFinderMvpApp')
            requireAuth: function(){
              return auth.$requireSignIn();
            }, // requireAuth
+
+
+
            register: function(user){
 
                      // firebase authentication
@@ -67,7 +70,7 @@ angular.module('resourceFinderMvpApp')
                            $rootScope.message = "Hi" + user.firstname + ",Thanks for registering";
                            returnObject.login(user);
                          }).catch(function(error){
-                           $rootScope.message = error.message;
+                           $rootScope.message = "error.message";
                          }); //createUserWithEmailAndPassword
            } //register
       }; //returnObject

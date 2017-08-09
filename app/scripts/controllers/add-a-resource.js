@@ -24,14 +24,18 @@ angular.module('resourceFinderMvpApp')
     //
     // };
 
-
 // check to see if user is authenticated
       auth.$onAuthStateChanged(function(authUser){
            if (authUser){
 
                 var resourceRef = ref.child('resource');
                 var resourceInfo = $firebaseArray(resourceRef);
+
                 $rootScope.resource = resourceInfo;
+
+                resourceInfo.$loaded().then(function(data){
+                  $rootScope.numberOfResources = resourceInfo.length;
+                })
 
              $scope.addResource = function(resource) {
                resourceInfo.$add({
@@ -51,29 +55,33 @@ angular.module('resourceFinderMvpApp')
                }); //close resourceInfo
 
 
-          // clear scope
-            $scope.resource.name = '';
-            $scope.resource.type = {
-              shelter: false,
-              water: false,
-              food: false,
-              electricity: false,
-              clothings: false,
-              cleanup: false
-            };
-            $scope.resource.website = '';
-            $scope.resource.hours = '';
-            $scope.resource.description = '';
+                      // clear scope
+                        $scope.resource.name = '';
+                        $scope.resource.type = {
+                          shelter: false,
+                          water: false,
+                          food: false,
+                          electricity: false,
+                          clothings: false,
+                          cleanup: false
+                        };
+                        $scope.resource.website = '';
+                        $scope.resource.hours = '';
+                        $scope.resource.description = '';
 
-            $scope.message = 'Thank for adding a resource';
+                        $scope.message = 'Thank for adding a resource';
 
-            //go back to main  view
-            $timeout(function(){
-                  $state.go('main');
-            },1000);  // close timeout
-
-
+                        //go back to main  view
+                        $timeout(function(){
+                              $state.go('main');
+                        },1000);  // close timeout
              };  //close addResource
+
+            $scope.deleteResource = function(key){
+                resourceInfo.$remove(key);
+            } //close deleteResource
+
+
        }  //auth user
      }); // onAuthStateChanged
 

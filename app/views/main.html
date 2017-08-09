@@ -26,43 +26,38 @@
               <h1>User Profile</h1>
               </a>
         </custom-control>
-        <custom-control ng-show = "currentUser" position="TOP_LEFT">
-          <a ui-sref="add-a-resource">
-              <h1>Add A Resource</h1>
-              </a>
-        </custom-control>
 
         <custom-control position="TOP_LEFT">
           <div id="floating-panel">
-          <input id="latlng" type="text" value="40.714224,-73.961452"
+          <input id="latlng" type="text"
            ng-model="vm.currentMarkerValue" ng-show="vm.hideinput">
-          <!-- <input id="submit" type="button" value="Reverse Geocode" > -->
           </div>
         </custom-control>
 
 
-        <!-- <info-window id="info-window" position="{{Lat}},{{Lng}}"    ng-click="vm.addnewresource()">
-          <div ng-non-bindable>
-            <a  ui-sref="add-a-resource">
+        <!-- <marker position = "{{$rootScope.resource[0].location.LatLng.lat}},{{$rootScope.resource[0].location.LatLng.lng}}"> </marker> -->
+            <!-- <marker ng-repeat="(key, resourse) in resource" position=""></marker> -->
+       <!-- <marker ng-repeat="(key, resource) in resource"
+       position = "[{resource.location.LatLng.lat}},{{resource.location.LatLng.lng}}]"></marker> -->
+
+          <custom-marker id="customthings" position="[{{lat}},{{lng}}]" >
+               <div class="custom-marker-innerdiv">
+                    <p ng-click="vm.closeCustomMarker(); vm.reAble() ">X</p>
+               </div>
+                 <div class="custom-marker-innerdiv">
+                    <a ui-sref="add-a-resource">click here to add a resource</a>
+                </div>
+         </custom-marker>
 
 
-             click here to add a resource
-            </a>
-           </div>
-
-         </info-window> -->
-
-          <custom-marker id="customthings" position="{{lat}},{{lng}}" >
-                           <div class="custom-marker-innerdiv">
-                             <p ng-click="vm.closeCustomMarker(); vm.reAble() ">X</p>
-                           </div>
-                             <div class="custom-marker-innerdiv">
-                               <a ui-sref="add-a-resource">click here to add a resource</a>
-
-                             </div>
-                       </custom-marker>
-
-
+         <!-- <marker ng-repeat="p in vm.positions track by $index"
+               id="custom-marker-{{$index}}"
+               on-click="vm.map.showInfoWindow('foo', 'custom-marker-'+$index)"
+               position="{{p.pos}}">
+               <div>
+                 position {{p.name}}: {{p.pos[0]}}, {{p.pos[1]}}
+               </div>
+             </marker> -->
 
      </ng-map>      <!-- close map -->
 
