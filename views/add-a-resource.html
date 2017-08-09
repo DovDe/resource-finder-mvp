@@ -9,7 +9,7 @@
             <p>{{resourcelng}}</p>
 
             <a ui-sref="main">Main</a>
-            <form name="addAShelterResource" ng-submit="addResource()"  novalidate>
+            <form name="addAResource" ng-submit="addResource()"  novalidate>
 
 
                              <fieldset>
@@ -31,6 +31,7 @@
                                           ng-required="true" placeholder="Resource Name">
 
                                        </div>
+
 
                                        <div class="col-lg-12">
                                          <h3>Resource Website</h3>
@@ -61,4 +62,31 @@
                       <h2 class='col-lg-12 success-message'>{{message}}</h2>
           </div>   <!--close row    -->
       </div> <!--close container    -->
+      <div class="container">
+        <div class="row">
+
+
+          <div class="col-lg-6" ng-repeat="(key, resource) in resource">
+
+                  <div class="col-lg-12 resource-info-heading">
+                      <h3>{{resource.name}}</h3>                      
+                      <p>{{resource.location.formatted_address}}</p>
+                      <p>{{resource.location.LatLng.lat}},{{resource.location.LatLng.lng}}</p>
+
+                  </div>  <!-- close  resource-info-heading   -->
+                  <div class="col-lg-12">
+                    <button class="btn btn-primary delete-button" ng-click="deleteResource(key)">
+                      Delete this resource</button>
+                  </div>
+
+
+
+
+
+
+          </div>  <!-- close resource -- >
+
+        </div>
+
+      </div>
 </div>  <!--close controller  -->
