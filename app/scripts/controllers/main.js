@@ -10,16 +10,39 @@
 
 
 angular.module('resourceFinderMvpApp')
-.controller('MainCtrl', function(NgMap, $scope, $state, $rootScope, $timeout, $firebase, $firebaseAuth, $firebaseArray, $firebaseObject) {
+.controller('MainCtrl', function(NgMap, $scope, $state, $rootScope, $timeout, $firebase, $firebaseAuth, $firebaseArray) {
       var vm = this;
       vm.addingResource =false;
       vm.hideinput = false;
       vm.inProgress = false;
+      var geocoder = new google.maps.Geocoder;
+
+      // -------------- create markers function--------
+      var populateMarkers = function(data){
+      vm.markers= [];
+      // var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      // var labelIndex = 0;
+      for (var i=0; i< data.length; i++){
+
+                 var lat = data[i].location.LatLng.lat;
+                 var lng = data[i].location.LatLng.lng;
+                 var pos = new google.maps.LatLng(lat,lng);
+
+                 //create new markers
+                vm.markers[i] =  new google.maps.Marker({position: pos,
+                        id: i,
+                       //  label: labels[labelIndex++ % labels.length],
+                       clickable: true,
+                       animation: google.maps.Animation.DROP,
+                       map: vm.map});
+                    vm.markers[i].setMap(vm.map);
+
+      }  //close for loop
+    }; // close populateMarkers
 
 
-   //   geocoding to get address from lat lng
-            var geocoder = new google.maps.Geocoder;
-             function geocodeLatLng(geocoder, map) {
+   // ----  geocoding to get address from lat lng  --------
+      var geocodeLatLng =    function(geocoder) {
                          var input = document.getElementById('latlng').value;
                          var latlngStr = input.split(',', 2);
                          var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
@@ -43,8 +66,7 @@ angular.module('resourceFinderMvpApp')
                              window.alert('Geocoder failed due to: ' + status);
                            }
                          });
-             }   // close geocodeLatLng
-
+             };   // close geocodeLatLng
 
 
 
@@ -57,93 +79,82 @@ angular.module('resourceFinderMvpApp')
 
 
       //  get map function
-        NgMap.getMap().then(function(map) {
-                 vm.map = map;
-                 vm.home = vm.map.getCenter();
-                 $rootScope.currentMarkerLat = vm.home.lat();
-                 $rootScope.currentMarkerLng = vm.home.lng();
-                 var markerstringvalue = $rootScope.currentMarkerLat.toString()+","+$rootScope.currentMarkerLng.toString();
-                 vm.currentMarkerValue = markerstringvalue;
+  NgMap.getMap().then(function(map) {
+             vm.map = map;
+
+              // updating lat lng for click function
+               vm.home = vm.map.getCenter();
+               $rootScope.currentMarkerLat = vm.home.lat();
+               $rootScope.currentMarkerLng = vm.home.lng();
+               var markerstringvalue = $rootScope.currentMarkerLat.toString()+","+$rootScope.currentMarkerLng.toString();
+               vm.currentMarkerValue = markerstringvalue;
+
+//  ---------------- setting variables to extract firebase data   ---------------------------
+           var ref= firebase.database().ref();
+           var resourceRef = ref.child('resource');
+           var resourceInfo = $firebaseArray(resourceRef);
+
+             vm.resourceMarkers = resourceInfo;
+
+
+             //  load firebase data then fire function
+               resourceInfo.$loaded().then(function(data){
+                    // add markers to map
+                      populateMarkers(data);
+              });  // closer loaded.then
+
+  }); //close getMap
 
 
 
-
-
-         vm.centerChanged = function() {
-             vm.home = vm.map.getCenter();
-             };
-        }); //close getMap
-
-
+// this function  is what opens the custom window to enable the user to navigat to the add-a-resource state
         vm.placeMarker = function(e) {
 
-                if (vm.inProgress){
-                    return;
-                }else {
-
-                    var marker = new google.maps.Marker({position: e.latLng, map: vm.map});
-                    vm.map.panTo(e.latLng);
-
-                    vm.home = vm.map.getCenter();
-                    $rootScope.currentMarkerLat = vm.home.lat();
-                    $rootScope.currentMarkerLng = vm.home.lng();
-
-                    var markerstringvalue = $rootScope.currentMarkerLat +","+ $rootScope.currentMarkerLng;
-                    vm.currentMarkerValue = markerstringvalue;
-
-                    // console.log(markerstringvalue);
-                    //  show custom marker method
-                    vm.showCustomMarker= function(evt) {
-                              vm.map.customMarkers.customthings.setVisible(true);
-                               vm.map.customMarkers.customthings.setPosition(vm.home);
-                    };  // close showCustomMarker
-
-                    vm.showCustomMarker();
-
-                    // disable maps onclick
-                    vm.inProgress = true;
-
-              }  // close else
-              $timeout(function(){
-                      geocodeLatLng(geocoder, map);
-               },300);  // close timeout
-
-        } ;   // close placeMarker
+                  if (vm.inProgress){
+                      return;
+                  }else {
 
 
+                      vm.map.panTo(e.latLng);
 
-        vm.addnewresource = function() {
-                vm.addingResource = true;
-        };
+                      vm.home = vm.map.getCenter();
+                      $rootScope.currentMarkerLat = vm.home.lat();
+                      $rootScope.currentMarkerLng = vm.home.lng();
+
+                      var markerstringvalue = $rootScope.currentMarkerLat +","+ $rootScope.currentMarkerLng;
+                      vm.currentMarkerValue = markerstringvalue;
+
+                      // console.log(markerstringvalue);
+                      //  show custom marker method
+                      vm.showCustomMarker= function() {
+                                vm.map.customMarkers.customthings.setVisible(true);
+                                 vm.map.customMarkers.customthings.setPosition(vm.home);
+                      };  // close showCustomMarker
+
+                      vm.showCustomMarker();
+
+                      // disable maps onclick
+                      vm.inProgress = true;
+
+                }  // close else
+                $timeout(function(){
+                        geocodeLatLng(geocoder);
+                 },300);  // close timeout
+
+  } ;   // close placeMarker
+
+  // close custom marker function
+  vm.closeCustomMarker= function() {
+             vm.map.customMarkers.customthings.setVisible(false);
+  };
+
+  // re-enable onclick after 300mls
+    vm.reAble=  function(){
+        $timeout(function(){
+                vm.inProgress = false;
+         },500);  // close timeout
+  }; // close vm.reAble
 
 
-
-
-
-        // close custom marker function
-        vm.closeCustomMarker= function(evt) {
-                   vm.map.customMarkers.customthings.setVisible(false);
-        };
-
-        // re-enable onclick after 300mls
-          vm.reAble=  function(){
-              $timeout(function(){
-                      vm.inProgress = false;
-               },500);  // close timeout
-        }; // close vm.reAble
-
-
-          var ref= firebase.database().ref();
-        var resourceRef = ref.child('resource');
-        var resourceInfo = $firebaseArray(resourceRef);
-
-        $rootScope.resource = resourceInfo;
-
-
-        resourceInfo.$loaded().then(function(data){
-          $rootScope.numberOfResources = resourceInfo.length;
-
-
-      });  // closer loaded.then
 
 });  //close controller

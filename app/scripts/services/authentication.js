@@ -35,7 +35,7 @@ angular.module('resourceFinderMvpApp')
             ).then(function(user){
               $location.path('/main');
             }).catch(function(error){
-              $rootScope.message = "error.message";
+              $rootScope.message = error.message;
             }); //  signInWithEmailAndPassword
            }, //login
 

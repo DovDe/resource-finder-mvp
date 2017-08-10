@@ -3,8 +3,7 @@
 
   <ng-map class="map" default-style="false" center="seattle"
       on-center-changed="vm.centerChanged()" map-type-control="false"
-      on-click="vm.placeMarker()" ng-disabled="inProgress"
-    id="map">
+      on-click="vm.placeMarker()" ng-disabled="inProgress" id="map">
 
         <custom-control class="searchControl searchInput" position="TOP_CENTER">
           <a ui-sref="main">
@@ -35,11 +34,6 @@
         </custom-control>
 
 
-        <!-- <marker position = "{{$rootScope.resource[0].location.LatLng.lat}},{{$rootScope.resource[0].location.LatLng.lng}}"> </marker> -->
-            <!-- <marker ng-repeat="(key, resourse) in resource" position=""></marker> -->
-       <!-- <marker ng-repeat="(key, resource) in resource"
-       position = "[{resource.location.LatLng.lat}},{{resource.location.LatLng.lng}}]"></marker> -->
-
           <custom-marker id="customthings" position="[{{lat}},{{lng}}]" >
                <div class="custom-marker-innerdiv">
                     <p ng-click="vm.closeCustomMarker(); vm.reAble() ">X</p>
@@ -49,15 +43,6 @@
                 </div>
          </custom-marker>
 
-
-         <!-- <marker ng-repeat="p in vm.positions track by $index"
-               id="custom-marker-{{$index}}"
-               on-click="vm.map.showInfoWindow('foo', 'custom-marker-'+$index)"
-               position="{{p.pos}}">
-               <div>
-                 position {{p.name}}: {{p.pos[0]}}, {{p.pos[1]}}
-               </div>
-             </marker> -->
 
      </ng-map>      <!-- close map -->
 
