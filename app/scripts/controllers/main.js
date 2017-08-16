@@ -15,13 +15,19 @@ angular.module('resourceFinderMvpApp')
       vm.addingResource =false;
       vm.hideinput = false;
       vm.inProgress = false;
+      vm.trueMarkerTypes=[];
+
       var geocoder = new google.maps.Geocoder;
 
+                  vm.infowindow = new google.maps.InfoWindow({
+                  content: 'hello'
+                  });
       // -------------- create markers function--------
+
       var populateMarkers = function(data){
-      vm.markers= [];
-      // var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      // var labelIndex = 0;
+      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var labelIndex = 0;
+        vm.markers= [];
       for (var i=0; i< data.length; i++){
 
                  var lat = data[i].location.LatLng.lat;
@@ -30,15 +36,19 @@ angular.module('resourceFinderMvpApp')
 
                  //create new markers
                 vm.markers[i] =  new google.maps.Marker({position: pos,
-                        id: i,
+                        id: vm.i,
                        //  label: labels[labelIndex++ % labels.length],
-                       clickable: true,
+
+                      //  clickable: true,
                        animation: google.maps.Animation.DROP,
                        map: vm.map});
-                    vm.markers[i].setMap(vm.map);
+                       vm.markers[i].setMap(vm.map);
 
       }  //close for loop
     }; // close populateMarkers
+
+
+     vm.position = [];
 
 
    // ----  geocoding to get address from lat lng  --------
@@ -100,7 +110,17 @@ angular.module('resourceFinderMvpApp')
              //  load firebase data then fire function
                resourceInfo.$loaded().then(function(data){
                     // add markers to map
-                      populateMarkers(data);
+                      // populateMarkers(data);
+
+                      // for (var i=0; i< data.length; i++){
+                      //       vm.markerlat = data[i].location.LatLng.lat;
+                      //       vm.markerlng = data[i].location.LatLng.lng;
+                      //         vm.pos =  [vm.markerlat,vm.markerlng];
+                      //
+                      //        vm.position.push({pos: vm.pos});
+                      //
+                      // }  //close for loop
+                      //   console.log(vm.position);
               });  // closer loaded.then
 
   }); //close getMap
@@ -154,6 +174,12 @@ angular.module('resourceFinderMvpApp')
                 vm.inProgress = false;
          },500);  // close timeout
   }; // close vm.reAble
+
+  vm.showMarkerData = function (e, resource){
+    vm.resource = resource;
+    vm.map.showInfoWindow('info-window', resource.id);
+  };
+
 
 
 

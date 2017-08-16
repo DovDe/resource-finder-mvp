@@ -74,7 +74,13 @@ angular
           '': {
             templateUrl: 'views/add-a-resource.html',
             controller: 'AddAResourceCtrl'
-          }
+          },
+          resolve:{
+             // Since it's not a promise, it resolves immediately.
+             currentAuth:  function(authentication){
+                return authentication.requireAuth();
+             } // currentAuth
+          }  //  reso
 
       }
     });
