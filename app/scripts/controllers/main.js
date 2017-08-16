@@ -16,7 +16,6 @@ angular.module('resourceFinderMvpApp')
       vm.hideinput = false;
       vm.inProgress = false;
       vm.trueMarkerTypes=[];
-
       var geocoder = new google.maps.Geocoder;
 
                   vm.infowindow = new google.maps.InfoWindow({
@@ -59,7 +58,7 @@ angular.module('resourceFinderMvpApp')
                          geocoder.geocode({'location': latlng}, function(results, status) {
                            if (status === 'OK') {
                              if (results[1]) {
-                               console.log(results[1].formatted_address);
+                              //  console.log(results[1].formatted_address);
                                  $rootScope.NewResourceAddress= results[1].formatted_address;
                                  console.log($rootScope.NewResourceAddress);
                                // map.setZoom(11);
@@ -106,22 +105,11 @@ angular.module('resourceFinderMvpApp')
 
              vm.resourceMarkers = resourceInfo;
 
+             $rootScope.address = vm.address;
 
              //  load firebase data then fire function
                resourceInfo.$loaded().then(function(data){
-                    // add markers to map
-                      // populateMarkers(data);
-
-                      // for (var i=0; i< data.length; i++){
-                      //       vm.markerlat = data[i].location.LatLng.lat;
-                      //       vm.markerlng = data[i].location.LatLng.lng;
-                      //         vm.pos =  [vm.markerlat,vm.markerlng];
-                      //
-                      //        vm.position.push({pos: vm.pos});
-                      //
-                      // }  //close for loop
-                      //   console.log(vm.position);
-              });  // closer loaded.then
+                });  // closer loaded.then
 
   }); //close getMap
 

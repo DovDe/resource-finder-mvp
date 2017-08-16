@@ -36,6 +36,9 @@ angular.module('resourceFinderMvpApp')
                 resourceInfo.$loaded().then(function(data){
                   $rootScope.numberOfResources = resourceInfo.length;
                 })
+                $scope.resource.hours = '';
+                $scope.resource.description='';
+
 
              $scope.addResource = function(resource) {
                resourceInfo.$add({
@@ -50,7 +53,8 @@ angular.module('resourceFinderMvpApp')
                              lng: $rootScope.currentMarkerLng
                            },
                            formatted_address: $rootScope.NewResourceAddress
-                   }
+                   },
+
 
                }); //close resourceInfo
 
@@ -62,13 +66,14 @@ angular.module('resourceFinderMvpApp')
                           water: false,
                           food: false,
                           electricity: false,
-                          clothings: false,
-                          cleanup: false
+                          clothing: false,
+                          sanitation: false
                         };
                         $scope.resource.website = '';
                         $scope.resource.hours = '';
                         $scope.resource.description = '';
-
+                        $scope.resource.clothing = '';
+                        $scope.resource.sanitation = '';
                         $scope.message = 'Thank for adding a resource';
 
                         //go back to main  view
