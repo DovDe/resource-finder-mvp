@@ -43,6 +43,26 @@
                 </div>
          </custom-marker>
 
+         <marker ng-repeat="resource in vm.resourceMarkers"
+         position="{{[resource.location.LatLng.lat, resource.location.LatLng.lng]}}"
+         data="Hello"
+         id="{{resource.id}}"
+        on-click="vm.showMarkerData(resource)"
+        title="{{resource.name}}">
+
+      </marker>
+
+
+
+         <info-window id="info-window" position="{{[vm.resource.location.LatLng.lat, vm.resource.location.LatLng.lng]}}">
+       <div ng-non-bindable="" >
+         <h3>{{vm.resource.name}}</h3>
+         <h4>{{vm.resource.type}}</h4>
+         <p>{{vm.resource.hours}}</p>
+         <p>{{vm.resource.description}}</p>
+
+       </div>
+     </info-window>
 
      </ng-map>      <!-- close map -->
 
