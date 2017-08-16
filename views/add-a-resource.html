@@ -4,7 +4,7 @@
             <h1>Add A Resource</h1>
 
 
-            <p> Add a resource to this location: {{resourceaddress}}</p>          
+            <p> Add a resource to this location: {{resourceaddress}}</p>
             <a ui-sref="main">Main</a>
             <form name="addAResource" ng-submit="addResource()"  novalidate>
 
@@ -18,7 +18,7 @@
                                  <p>Food <input type="checkbox" name="resourceTypeFood"ng-model="resource.type.food"></p>
                                  <p>Electricity <input type="checkbox" name="resourceTypeElectricity"ng-model="resource.type.electricity"></p>
                                  <p>Clothing <input type="checkbox" name="resourceTypeClothing"ng-model="resource.type.clothing"></p>
-                                 <p>Clean up <input type="checkbox" name="resourceTypeCleanup"ng-model="resource.type.cleanup"></p>
+                                 <p>Clean up <input type="checkbox" name="resourceTypeSanitation"ng-model="resource.type.sanitation"></p>
                                </div>
 
                                <div class="col-lg-3 text-left">
@@ -50,6 +50,12 @@
                                       ng-model="resource.description" ng-required="false">Description</textarea>
                                </div>
 
+                               <div class="col-lg-12">
+                                 <h3>Resource Address</h3>
+
+                                 <input type="text" name="formattedaddress" ng-model="resource.formatted_address"
+                                      ng-required="false" placeholder="{{NewResourceAddress}}" value="{{NewResourceAddress}}">
+                               </div>
 
                              </fieldset>
 
