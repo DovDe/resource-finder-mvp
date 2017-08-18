@@ -20,10 +20,10 @@
 
                           <div class="col-xl-12 col-lg-12 col-md-12">
                             <a ui-sref="main">
-                                <img src="/../images/home.png">
+                                <img ng-src="{{homeIcon}}">
                             </a>
                             <a ui-sref="user-profile">
-                                <img src="/../images/user-profile.png" alt="">
+                                <img ng-src="{{userProfileIcon}}" alt="">
                               </a>
                           </div>
 
@@ -53,7 +53,7 @@
 
         <custom-control id="marker-filter" position="TOP_LEFT" style="width: 5vw;">
 
-              <img src="/../images/settings.png" id="markerSettingsBtn"
+              <img ng-src="{{settingsIcon}}" id="markerSettingsBtn"
                ng-click="vm.showMarkerFilters()"></img>
 
           <div class="markerfilter container" ng-show="vm.markerFilters">
