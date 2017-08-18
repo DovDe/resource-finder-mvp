@@ -27,19 +27,20 @@ angular.module('resourceFinderMvpApp')
                 var resourceInfo = $firebaseArray(resourceRef);
                 $rootScope.resource = resourceInfo;
 
+                $scope.resource.name = '';
+                $scope.resource.hours = '';
+                $scope.resource.description='';
+                $scope.resource.website='';
 
 
              $scope.addResource = function(resource) {
 
-              //  $scope.resource.name = '';
-               $scope.resource.hours = '';
-               $scope.resource.description='';
 
                resourceInfo.$add({
                    name: $rootScope.resource.name,
                    date: firebase.database.ServerValue.TIMESTAMP,
                    type: $rootScope.resource.type,
-                   hours: $scope.resource.hours,
+                   hours: $rootScope.resource.hours,
                    description: $scope.resource.description,
                    location: {
                            LatLng: {
@@ -48,7 +49,7 @@ angular.module('resourceFinderMvpApp')
                            },
                            formatted_address: $rootScope.NewResourceAddress
                    },
-
+                   website: $rootScope.resource.website
 
                }); //close resourceInfo
 
@@ -66,8 +67,7 @@ angular.module('resourceFinderMvpApp')
                         $scope.resource.website = '';
                         $scope.resource.hours = '';
                         $scope.resource.description = '';
-                        $scope.resource.clothing = '';
-                        $scope.resource.sanitation = '';
+                      
                         $scope.message = 'Thank for adding a resource';
 
                         //go back to main  view
