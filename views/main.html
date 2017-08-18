@@ -91,15 +91,20 @@
          <info-window id="markerdata"
           position="{{[vm.resource.location.LatLng.lat, vm.resource.location.LatLng.lng]}}">
                 <div>
-                  <p>Resource Name:{{vm.resource.name}}</p>
-                 <p>Resource Type:</p>
-                  <p ng-show="vm.resource.type.water">Water</p>
+                  <p><b>Resource Name: </b> {{vm.resource.name}}</p>
+                 <p><b> Resource Type:</b></p>
+                  <p ng-show="vm.resource.type.water" >Water</p>
                   <p ng-show="vm.resource.type.shelter">Shelter</p>
-                   <p ng-show="vm.resource.type.food">Food</p>
+                  <p ng-show="vm.resource.type.food">Food</p>
                    <p ng-show="vm.resource.type.electricity">Electricity</p>
                    <p ng-show="vm.resource.type.sanitation">Sanitation</p>
                    <p ng-show="vm.resource.type.clothing">Clothing</p>
-
+                   <p><b>Resource Hours:</b> {{vm.resource.hours}}</p>
+                   <p><b>Resource Website:</b><a href="{{vm.resource.website}}" target="_blank">{{vm.resource.website}}</a>  </p>
+                   <p> <b>Resource Description:</b> {{vm.resource.description}}</p>
+                   <div class="w-100">
+                     <a ui-sref="">Edit this resource <i>(currently not available comming soon)</i> </a>
+                   </div>
                 </div>
      </info-window>
 
