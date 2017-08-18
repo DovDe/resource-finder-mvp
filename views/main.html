@@ -5,26 +5,42 @@
       on-center-changed="vm.centerChanged()" map-type-control="false"
       on-click="vm.placeMarker()" ng-disabled="inProgress" id="map">
 
-        <custom-control class="searchControl searchInput" position="TOP_CENTER">
-          <a ui-sref="main">
-              <h1>Home</h1>
-              </a>
-              <h3 ng-show="currentUser"> Hi {{currentUser.firstname}} <a ui-sref="user-profile" ng-click="logout()">Logout</a></h3>
+        <custom-control  id="main-nav" position="TOP_CENTER" style="width: 40vw; margin:0; padding:0; text-center" >
+          <div class="container">
+            <div class="row">
 
-          <input places-auto-complete size=80
-            ng-model="vm.address"
-            component-restrictions="{country:'us'}"
-            on-place-changed="vm.placeChanged()"
-           />
+                  <div class=" col-xl-12 col-lg-12 col-md-12 homeLink">
+                    <div class="hello-user col-xl-12 col-lg-12 col-md-12 ">
+                      <p ng-show="currentUser">
+                         Hi {{currentUser.firstname}} <a ui-sref="user-profile" ng-click="logout()">Logout</a>
+                      </p>
+                    </div>
+
+                          <div class="col-xl-12 col-lg-12 col-md-12">
+                            <a ui-sref="main">
+                                <img ng-src="../images/home.png">
+                            </a>
+                            <a ui-sref="user-profile">
+                                <img ng-src="../images/user-profile.png" alt="">
+                              </a>
+                          </div>
+
+                  </div>
+
+
+              <div class="searchControl col-xl-12 col-lg-12 col-md-12" >
+                <input places-auto-complete
+                  ng-model="vm.address"
+                  component-restrictions="{country:'us'}"
+                  on-place-changed="vm.placeChanged()"
+                 />
+              </div>
+
+            </div>  <!--close row      -->
+          </div>   <!--close container      -->
+
         </custom-control>
 
-        <custom-control position="TOP_RIGHT">
-
-
-          <a ui-sref="user-profile">
-              <h1>User Profile</h1>
-              </a>
-        </custom-control>
 
         <custom-control position="TOP_LEFT">
           <div id="floating-panel">
@@ -33,12 +49,31 @@
           </div>
         </custom-control>
 
+        <custom-control id="marker-filter" position="TOP_LEFT" style="width: 5vw;">
+
+              <img ng-src="../images/settings.png" id="markerSettingsBtn" ng-click="vm.showMarkerFilters()"></img>
+
+          <div class="markerfilter container" ng-show="vm.markerFilters">
+              <div class="row">
+                    <div class="col-lg-12">
+                      <p>Shelter <input type="checkbox" ><p>
+                      <p>Water <input type="checkbox" ></p>
+                      <p>Food <input type="checkbox"></p>
+                      <p>Electricity <input type="checkbox"></p>
+                      <p>Clothing <input type="checkbox"></p>
+                      <p>Clean up <input type="checkbox"></p>
+                    </div>
+              </div>
+          </div>
+
+
+        </custom-control>
 
           <custom-marker id="customthings" position="[{{lat}},{{lng}}]" >
                <div class="custom-marker-innerdiv">
-                    <p ng-click="vm.closeCustomMarker(); vm.reAble() ">X</p>
+                    <p ng-click="vm.closeCustomMarker(); vm.reAble() "class="text-center">X</p>
                </div>
-                 <div class="custom-marker-innerdiv">
+               <div class="custom-marker-innerdiv">
                     <a ui-sref="add-a-resource">click here to add a resource</a>
                 </div>
          </custom-marker>
@@ -53,25 +88,19 @@
 
 
 
-         <info-window id="info-window" position="{{[vm.resource.location.LatLng.lat, vm.resource.location.LatLng.lng]}}">
-       <div ng-non-bindable="" >
-         <h2>{{vm.resource.name}}</h2>
-         <div class="info-window-resource-type">
-           <h3>Resource Type:</h3>
-           <p ng-show="vm.resource.type.water">Water</p>
-           <p ng-show="vm.resource.type.shelter">Shelter</p>
-           <p ng-show="vm.resource.type.food">Food</p>
-           <p ng-show="vm.resource.type.electricity">Electricity</p>
-           <p ng-show="vm.resource.type.sanitation">Sanitation</p>
-           <p ng-show="vm.resource.type.clothing">Clothing</p>
+         <info-window id="markerdata"
+          position="{{[vm.resource.location.LatLng.lat, vm.resource.location.LatLng.lng]}}">
+                <div>
+                  <p>Resource Name:{{vm.resource.name}}</p>
+                 <p>Resource Type:</p>
+                  <p ng-show="vm.resource.type.water">Water</p>
+                  <p ng-show="vm.resource.type.shelter">Shelter</p>
+                   <p ng-show="vm.resource.type.food">Food</p>
+                   <p ng-show="vm.resource.type.electricity">Electricity</p>
+                   <p ng-show="vm.resource.type.sanitation">Sanitation</p>
+                   <p ng-show="vm.resource.type.clothing">Clothing</p>
 
-
-         </div>
-
-         <p>{{vm.resource.hours}}</p>
-         <p>{{vm.resource.description}}</p>
-
-       </div>
+                </div>
      </info-window>
 
      </ng-map>      <!-- close map -->
