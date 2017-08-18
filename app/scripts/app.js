@@ -39,16 +39,6 @@ angular
               '':{
                 templateUrl:'views/main.html',
                 controller: 'MainCtrl as vm'
-              },
-              'new-resource': {
-                templateUrl: 'views/add-a-resource.html',
-                controller: 'AddAResourceCtrl',
-                resolve:{
-                   // Since it's not a promise, it resolves immediately.
-                   currentAuth:  function(authentication){
-                      return authentication.requireAuth();
-                   } // currentAuth
-                }  //  resol
               }
       }
     })
@@ -64,25 +54,15 @@ angular
     })
     .state( 'add-a-resource',{
       url: '/add-a-resource',
+      templateUrl: 'views/add-a-resource.html',
+      controller: 'AddAResourceCtrl',
       resolve:{
          // Since it's not a promise, it resolves immediately.
          currentAuth:  function(authentication){
             return authentication.requireAuth();
          } // currentAuth
-      },  //  resolve
-      views: {
-          '': {
-            templateUrl: 'views/add-a-resource.html',
-            controller: 'AddAResourceCtrl'
-          },
-          resolve:{
-             // Since it's not a promise, it resolves immediately.
-             currentAuth:  function(authentication){
-                return authentication.requireAuth();
-             } // currentAuth
-          }  //  reso
-
       }
+
     });
 
 

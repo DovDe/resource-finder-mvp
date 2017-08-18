@@ -10,44 +10,18 @@
 
 
 angular.module('resourceFinderMvpApp')
-.controller('MainCtrl', function(NgMap, $scope, $state, $rootScope, $timeout, $firebase, $firebaseAuth, $firebaseArray) {
+.controller('MainCtrl', function(NgMap, $scope, $state, $rootScope, $timeout, $firebase,
+   $firebaseAuth, $firebaseArray, authentication) {
+
       var vm = this;
       vm.addingResource =false;
       vm.hideinput = false;
       vm.inProgress = false;
       vm.trueMarkerTypes=[];
+      vm.markerFilters = false;
+
       var geocoder = new google.maps.Geocoder;
 
-                  vm.infowindow = new google.maps.InfoWindow({
-                  content: 'hello'
-                  });
-      // -------------- create markers function--------
-
-      var populateMarkers = function(data){
-      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      var labelIndex = 0;
-        vm.markers= [];
-      for (var i=0; i< data.length; i++){
-
-                 var lat = data[i].location.LatLng.lat;
-                 var lng = data[i].location.LatLng.lng;
-                 var pos = new google.maps.LatLng(lat,lng);
-
-                 //create new markers
-                vm.markers[i] =  new google.maps.Marker({position: pos,
-                        id: vm.i,
-                       //  label: labels[labelIndex++ % labels.length],
-
-                      //  clickable: true,
-                       animation: google.maps.Animation.DROP,
-                       map: vm.map});
-                       vm.markers[i].setMap(vm.map);
-
-      }  //close for loop
-    }; // close populateMarkers
-
-
-     vm.position = [];
 
 
    // ----  geocoding to get address from lat lng  --------
@@ -85,6 +59,14 @@ angular.module('resourceFinderMvpApp')
               vm.map.setCenter(vm.place.geometry.location);
       };  // close placeChanged
 
+      var ref= firebase.database().ref();
+      var resourceRef = ref.child('resource');
+      var resourceInfo = $firebaseArray(resourceRef);
+
+        vm.resourceMarkers = resourceInfo;
+
+        $rootScope.address = vm.address;
+        $rootScope.resource = resourceInfo;
 
 
       //  get map function
@@ -99,20 +81,13 @@ angular.module('resourceFinderMvpApp')
                vm.currentMarkerValue = markerstringvalue;
 
 //  ---------------- setting variables to extract firebase data   ---------------------------
-           var ref= firebase.database().ref();
-           var resourceRef = ref.child('resource');
-           var resourceInfo = $firebaseArray(resourceRef);
 
-             vm.resourceMarkers = resourceInfo;
-
-             $rootScope.address = vm.address;
 
              //  load firebase data then fire function
                resourceInfo.$loaded().then(function(data){
                 });  // closer loaded.then
 
   }); //close getMap
-
 
 
 // this function  is what opens the custom window to enable the user to navigat to the add-a-resource state
@@ -160,14 +135,20 @@ angular.module('resourceFinderMvpApp')
     vm.reAble=  function(){
         $timeout(function(){
                 vm.inProgress = false;
-         },500);  // close timeout
+         },1000);  // close timeout
   }; // close vm.reAble
 
   vm.showMarkerData = function (e, resource){
     vm.resource = resource;
-    vm.map.showInfoWindow('info-window', resource.id);
+    vm.map.showInfoWindow('markerdata', resource.id);
   };
-
+vm.showMarkerFilters = function() {
+  if (vm.markerFilters === false){
+    vm.markerFilters = true;
+  }else{
+    vm.markerFilters= false;
+  }
+};
 
 
 

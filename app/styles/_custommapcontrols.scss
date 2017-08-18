@@ -1,0 +1,62 @@
+
+custom-control{
+  // width: 100vw;
+  text-align: center;
+  // vertical-align: text-bottom;
+  // height: 5vh;
+  .container{
+    width: 80%;
+
+  }
+  div{
+    width: 100%;
+
+  }
+  img{
+    height: 6vh;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+#marker-filter{
+  text-align: left;
+
+  margin: 0;
+  padding: 0;
+}
+.homeLink{
+  margin: 0;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+  // background: rgba(240,240,240,0.4);
+          a{
+            padding: 0 1em 0 1em;
+          }
+}
+.hello-user{
+  font-size: 1.5em;
+}
+.user-link{
+  padding: 0.5em 0 0.5em 0;
+}
+.searchControl{
+
+  width: 100%;
+  input{
+    width: 100%;
+  }
+}
+#markerSettingsBtn{
+
+  height: 7vh;
+}
+.markerfilter{
+  background: rgba(240,240,240,0.7);
+}
+.user-profile-links{
+  img{
+    height: 15vh;
+  }
+}

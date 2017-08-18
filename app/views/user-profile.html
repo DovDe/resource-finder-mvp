@@ -1,14 +1,28 @@
 <div ng-controller="UserProfileCtrl">
 
-        <div id='user-profile'>
-              <a ui-sref="main">
-                  <h1>Home</h1>
-              </a>
-              <a ui-sref="add-a-resource">
-                  <h1>Add A Resource</h1>
-              </a>
-        </div>
 
+        <div class="container">
+          <div class="row">
+
+                <div class=" col-xl-12 col-lg-12 col-md-12 homeLink">
+                  <div class="hello-user col-xl-12 col-lg-12 col-md-12 ">
+                    <p ng-show="currentUser">
+                       Hi {{currentUser.firstname}} <a ui-sref="user-profile" ng-click="logout()">Logout</a>
+                    </p>
+                  </div>
+
+                        <div class="col-xl-12 col-lg-12 col-md-12 user-profile-links">
+                          <a ui-sref="main">
+                              <img ng-src="../images/home.png">
+                          </a>
+                          <a ui-sref="user-profile">
+                              <img ng-src="../images/user-profile.png" alt="">
+                            </a>
+                        </div>
+
+                </div>
+            </div>
+        </div>
 <!--  This page will contain nested views for the login/register  that will load for now
 I will keep both in the main section  untill I figure it out
 
@@ -17,43 +31,66 @@ I will keep both in the main section  untill I figure it out
 
        -->
 
-       <h3 ng-show="currentUser">Hi {{currentUser.firstname}} <a ng-click="logout()">Logout</a></h3>
+<div class="container">
+      <div class="row">
+          <div class="col-xl-3 col-lg-3">
+          </div>
 
-       <form name="userLogin"  ng-submit="login()" novalidate>
+          <div class="col-xl-6 col-lg-6">
+            <form name="userLogin"  ng-submit="login()" novalidate>
 
-               <div class="login" ng-hide="currentUser">
-                     <h1>Login</h1>
-                     <p ng-show="message">{{message}}</p>
-
-
-
-               <fieldset>
-                         <input type="email" name="email" placeholder="Email" ng-model="user.email"
-                               ng-required="true">
-
-                               <p class="error validationError"
-                               ng-show="userLogin.email.$invalid && userLogin.email.$touched">
-                               Please fill out a proper email address</p>
+                <div class="login" ng-hide="currentUser">
+                      <h1>Please Login</h1>
+                      <p ng-show="message">{{message}}</p>
+                 </div>
 
 
-                         <input type="password"
-                              name="password" placeholder="Password"
-                              ng-model="user.password"
-                              ng-required="true"
-                              ng-minlength="6">
+                    <fieldset>
+                              <input type="email" name="email" placeholder="Email" ng-model="user.email"
+                                    ng-required="true">
 
-                              <p class="error validationError" ng-show="userLogin.password.$invalid && userLogin.password.$touched">
-                                The password must be at least six characters</p>
-               </fieldset>
-
-               <button type="submit" ng-disabled="userLogin.$invalid" class="btn">Submit</button>
-       </form>
-
-     </div>
-        <p ng-hide="currentUser">or <a ui-sref='user-profile.register'>Register</a></p>
+                                    <p class="error validationError"
+                                    ng-show="userLogin.email.$invalid && userLogin.email.$touched">
+                                    Please fill out a proper email address</p>
 
 
-       <div ui-view></div>
+                              <input type="password"
+                                   name="password" placeholder="Password"
+                                   ng-model="user.password"
+                                   ng-required="true"
+                                   ng-minlength="6">
+
+                                   <p class="error validationError" ng-show="userLogin.password.$invalid && userLogin.password.$touched">
+                                     The password must be at least six characters</p>
+                    </fieldset>
+
+                    <button type="submit" ng-disabled="userLogin.$invalid" class="btn">Submit</button>
+            </form>
+
+
+             <p ng-hide="currentUser">or <a ui-sref='user-profile.register'>Register</a></p>
+
+          </div>
+
+          <div class="col-xl-3 col-lg-3">
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-3 col-lg-3">
+        </div>
+        <div class="col-xl-6 col-lg-6">
+          <div ui-view></div>
+
+        </div>
+        <div class="col-xl-3 col-lg-3">
+        </div>
+
+      </div>
+</div>
+
+
+
+
 
 
 </div>  <!-- close controller   -->

@@ -4,8 +4,9 @@
 // endbower
 
 @import 'forms';
-@import "customcontrol";
-
+@import "custommarker";
+@import "custommapcontrols";
+@import "infoWindow";
 html{
   margin: 0;
   padding: 0;
@@ -16,8 +17,8 @@ html{
 body {
   padding: 0;
   margin: 0;
-  width:100vw;
-  height:100vh;
+  // width:100vw;
+  // height:100vh;
 }
 
 div {
@@ -45,34 +46,13 @@ input.ng-valid.ng-touched {
   padding-bottom: 10px;
   padding-top: 10px;
 }
-
-// .ng-map-info-window {
-//     background-color: lightgrey;
-//     color: #fff;
-//     width: 1000px;
-//   }
-#new-resources {
-  position: absolute;
-  margin: 0;
-  padding: 0;
-  z-index: 1000;
-  height: 100vh;
-  width: 100vw;
+#main-nav{
+  // background: rgba(230,230,230,0.7);
+margin: 0;
+padding: 0;
+// width: 80%
 }
+#info-window{
+    font-size: 0.5em;
 
-#new-resource-container{
-  position: absolute;
-  z-index: 980;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 100vw;
-  background: rgba(0,0,0,0.4);
-
-}
-#whatever{
-  z-index: 1000;
-  position: relative;
-  margin: 0;
-  padding: 0;
 }
