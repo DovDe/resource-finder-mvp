@@ -19,11 +19,9 @@
                     </div>
 
                           <div class="col-xl-12 col-lg-12 col-md-12">
-                            <a ui-sref="main">
-                                <img ng-src="/../images/home.png">
+                            <a ui-sref="main" class="homeIcon">
                             </a>
-                            <a ui-sref="user-profile">
-                                <img ng-src="/../images/user-profile.png" alt="">
+                            <a ui-sref="user-profile" class="userProfileIcon">
                               </a>
                           </div>
 
@@ -51,10 +49,10 @@
           </div>
         </custom-control>
 
-        <custom-control id="marker-filter" position="TOP_LEFT" style="width: 5vw;">
+        <custom-control id="marker-filter" position="TOP_LEFT">
 
-              <img ng-src="/../images/settings.png" id="markerSettingsBtn"
-               ng-click="vm.showMarkerFilters()"></img>
+              <div class="settingsIcon" id="markerSettingsBtn"
+               ng-click="vm.showMarkerFilters()"></div>
 
           <div class="markerfilter container" ng-show="vm.markerFilters">
               <div class="row">

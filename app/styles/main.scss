@@ -56,3 +56,27 @@ padding: 0;
     font-size: 0.5em;
 
 }
+.homeIcon{
+  margin: 0 3em 0 3em;
+  display: inline-block;
+  background: url("../images/home.png") center center no-repeat;
+  background-size: cover;
+  width: 4em;
+  height: 4em;
+}
+.userProfileIcon{
+  margin: 0 3em 0 3em;
+  display: inline-block;
+  background: url("../images/user-profile.png") center center no-repeat;
+  background-size: cover;
+  width: 4em;
+  height: 4em;
+}
+.settingsIcon{
+  margin: 1em 0.5em 0 0.5em;
+  display: inline-block;
+  background: url("../images/settings.png") center center no-repeat;
+  background-size: cover;
+  width: 6em;
+  height: 6em;
+}

@@ -19,7 +19,9 @@ angular.module('resourceFinderMvpApp')
       vm.inProgress = false;
       vm.trueMarkerTypes=[];
       vm.markerFilters = false;
-
+      $rootScope.homeIcon = "/images/home.png";
+      $rootScope.userProfileIcon= "/images/user-profile.png";
+      $rootScope.settingsIcon= "/images/settings.png";
       var geocoder = new google.maps.Geocoder;
 
 

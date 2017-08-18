@@ -9,7 +9,12 @@
  */
 angular.module('resourceFinderMvpApp')
 
-  .controller('UserProfileCtrl', function ($scope, authentication) {
+  .controller('UserProfileCtrl', function ($scope, authentication, $rootScope) {
+
+
+    $rootScope.homeIcon = "/images/home.png";
+    $rootScope.userProfileIcon= "/images/user-profile.png";
+    $rootScope.settingsIcon= "/images/settings.png";
 
         $scope.login= function(){
               authentication.login($scope.user);
