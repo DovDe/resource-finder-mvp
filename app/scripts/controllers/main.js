@@ -14,6 +14,20 @@ angular.module('resourceFinderMvpApp')
    $firebaseAuth, $firebaseArray, authentication) {
 
       var vm = this;
+      //  ---------------- setting variables to extract firebase data   ---------------------------
+
+      var auth= $firebaseAuth();
+      var ref= firebase.database().ref();
+      var resourceRef = ref.child('resource');
+      var resourceInfo = $firebaseArray(resourceRef);
+
+
+
+        vm.resourceMarkers = resourceInfo;
+
+        $rootScope.address = vm.address;
+        $rootScope.resource = resourceInfo;
+
       vm.addingResource =false;
       vm.hideinput = false;
       vm.inProgress = false;
@@ -23,7 +37,6 @@ angular.module('resourceFinderMvpApp')
       $rootScope.userProfileIcon= "/images/user-profile.png";
       $rootScope.settingsIcon= "/images/settings.png";
       var geocoder = new google.maps.Geocoder;
-
 
 
    // ----  geocoding to get address from lat lng  --------
@@ -53,6 +66,19 @@ angular.module('resourceFinderMvpApp')
                          });
              };   // close geocodeLatLng
 
+             NgMap.getMap().then(function(map) {
+                        vm.map = map;
+
+                         // updating lat lng for click function
+                          vm.home = vm.map.getCenter();
+                          $rootScope.currentMarkerLat = vm.home.lat();
+                          $rootScope.currentMarkerLng = vm.home.lng();
+                          var markerstringvalue = $rootScope.currentMarkerLat.toString()+","+$rootScope.currentMarkerLng.toString();
+                          vm.currentMarkerValue = markerstringvalue;
+
+
+
+             }); //close getMap
 
 
       // places changed function
@@ -61,35 +87,10 @@ angular.module('resourceFinderMvpApp')
               vm.map.setCenter(vm.place.geometry.location);
       };  // close placeChanged
 
-      var ref= firebase.database().ref();
-      var resourceRef = ref.child('resource');
-      var resourceInfo = $firebaseArray(resourceRef);
 
-        vm.resourceMarkers = resourceInfo;
-
-        $rootScope.address = vm.address;
-        $rootScope.resource = resourceInfo;
 
 
       //  get map function
-  NgMap.getMap().then(function(map) {
-             vm.map = map;
-
-              // updating lat lng for click function
-               vm.home = vm.map.getCenter();
-               $rootScope.currentMarkerLat = vm.home.lat();
-               $rootScope.currentMarkerLng = vm.home.lng();
-               var markerstringvalue = $rootScope.currentMarkerLat.toString()+","+$rootScope.currentMarkerLng.toString();
-               vm.currentMarkerValue = markerstringvalue;
-
-//  ---------------- setting variables to extract firebase data   ---------------------------
-
-
-             //  load firebase data then fire function
-               resourceInfo.$loaded().then(function(data){
-                });  // closer loaded.then
-
-  }); //close getMap
 
 
 // this function  is what opens the custom window to enable the user to navigat to the add-a-resource state
@@ -144,14 +145,16 @@ angular.module('resourceFinderMvpApp')
     vm.resource = resource;
     vm.map.showInfoWindow('markerdata', resource.id);
   };
-vm.showMarkerFilters = function() {
-  if (vm.markerFilters === false){
-    vm.markerFilters = true;
-  }else{
-    vm.markerFilters= false;
-  }
-};
 
+        vm.showMarkerFilters = function() {
+          if (vm.markerFilters === false){
+            vm.markerFilters = true;
+          }else{
+            vm.markerFilters= false;
+          }
+        };
 
-
+vm.logout = function() {
+  authentication.logout();
+}
 });  //close controller

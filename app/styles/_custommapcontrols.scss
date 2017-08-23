@@ -37,6 +37,12 @@ custom-control{
 }
 .hello-user{
   font-size: 1.5em;
+    p{
+      display: inline;
+    }
+    .logoutbtn{
+      color: blue;
+    }
 }
 .user-link{
   padding: 0.5em 0 0.5em 0;

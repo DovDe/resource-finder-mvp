@@ -8,48 +8,59 @@
  * Controller of the resourceFinderMvpApp
  */
 angular.module('resourceFinderMvpApp')
-  .controller('AddAResourceCtrl', function ($firebase, $firebaseAuth, $firebaseArray, $firebaseObject, $scope, $rootScope, $state, $timeout) {
-    // get resources
-    var ref= firebase.database().ref();
-    // get authentication
-    var auth= $firebaseAuth();
+  .controller('AddAResourceCtrl', function ($firebase, $firebaseAuth, $firebaseArray,
+     $firebaseObject, $scope, $rootScope, $state, $timeout) {
+       // get resources
+       var ref= firebase.database().ref();
+       // get authentication
+       var auth= $firebaseAuth();
 
-    $scope.resourceaddress = $rootScope.NewResourceAddress;
-    $scope.resourcelat =  $rootScope.currentMarkerLat;
-    $scope.resourcelng=  $rootScope.currentMarkerLng;
+
+   $scope.resourceaddress = $rootScope.NewResourceAddress;
+   $scope.resourcelat =  $rootScope.currentMarkerLat;
+   $scope.resourcelng=  $rootScope.currentMarkerLng;
+   var resourceRef = ref.child('resource');
+   var resourceInfo = $firebaseArray(resourceRef);
+   $rootScope.resource = resourceInfo;
+
+
 
 
 // check to see if user is authenticated
       auth.$onAuthStateChanged(function(authUser){
            if (authUser){
 
-                var resourceRef = ref.child('resource');
-                var resourceInfo = $firebaseArray(resourceRef);
-                $rootScope.resource = resourceInfo;
 
                 $scope.resource.name = '';
                 $scope.resource.hours = '';
                 $scope.resource.description='';
                 $scope.resource.website='';
+                $scope.resource.state='';
+                $scope.resource.city='';
+                $scope.resource.phone='';
+
 
 
              $scope.addResource = function(resource) {
 
 
                resourceInfo.$add({
-                   name: $rootScope.resource.name,
+                   name: $scope.resource.name,
                    date: firebase.database.ServerValue.TIMESTAMP,
-                   type: $rootScope.resource.type,
-                   hours: $rootScope.resource.hours,
+                   type: $scope.resource.type,
+                   hours: $scope.resource.hours,
                    description: $scope.resource.description,
                    location: {
                            LatLng: {
-                             lat: $rootScope.currentMarkerLat,
-                             lng: $rootScope.currentMarkerLng
+                             lat: $scope.currentMarkerLat,
+                             lng: $scope.currentMarkerLng
                            },
-                           formatted_address: $rootScope.NewResourceAddress
+                           formatted_address: $rootScope.NewResourceAddress,
+                           state: $scope.resource.state,
+                           city: $scope.resource.city
                    },
-                   website: $rootScope.resource.website
+                   website: $scope.resource.website,
+                   phone: $scope.resource.phone
 
                }); //close resourceInfo
 
@@ -67,7 +78,12 @@ angular.module('resourceFinderMvpApp')
                         $scope.resource.website = '';
                         $scope.resource.hours = '';
                         $scope.resource.description = '';
-                      
+                        $scope.resource.formatted_address = '';
+                        $scope.resource.location.state = '';
+                        $scope.resource.location.city = '';
+                        $scope.resource.location.state = '';
+                        $scope.resource.phone = '';
+
                         $scope.message = 'Thank for adding a resource';
 
                         //go back to main  view

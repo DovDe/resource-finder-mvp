@@ -53,24 +53,23 @@ angular.module('resourceFinderMvpApp')
 
                      // firebase authentication
                          auth.$createUserWithEmailAndPassword(
-                           user.email,
-                           user.password
+                           user.register.email,
+                           user.register.password
                          ).then(function(regUser)  {
                            var regRef = ref.child('users')
                                 .child(regUser.uid).set({
                                   date: firebase.database.ServerValue.TIMESTAMP,
                                   regUser: regUser.uid,
-                                  username:  user.username,
-                                  firstname: user.firstname,
-                                  lastname: user.lastname,
-                                  email: user.email,
-                                  password: user.password
+                                  firstname: user.register.firstname,
+                                  lastname: user.register.lastname,
+                                  email: user.register.email,
+                                  password: user.register.password
 
                                 });  //user info
                            $rootScope.message = "Hi" + user.firstname + ",Thanks for registering";
                            returnObject.login(user);
                          }).catch(function(error){
-                           $rootScope.message = "error.message";
+                           $rootScope.message = error.message;
                          }); //createUserWithEmailAndPassword
            } //register
       }; //returnObject
