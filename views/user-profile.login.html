@@ -1,28 +1,27 @@
-<form name="userLogin"  ng-submit="login()" novalidate>
+  <form name="userLogin"  ng-submit="login()" novalidate>
 
-        <div class="text-intro">
-              <h1>Login</h1>
-        </div>
-
-
-        <fieldset>
-                  <input type="text" name="username" placeholder="hello" ng-model="user.username"
-                        ng-required="true">
-
-                        <p class="error validationError" ng-show="userLogin.username.$invalid && userLogin.username.$touched">
-                        Please fill out your user name</p>
+          <div class="text-intro">
+                <h1>Login</h1>
+          </div>
 
 
-                  <input type="password"
-                       name="password" placeholder="Password"
-                       ng-model="user.password"
-                       ng-required="true"
-                       ng-minlength="6">
+          <fieldset>
+                    <input type="text" name="Email" placeholder="Email" ng-model="user.email"
+                          ng-required="true">
 
-                       <p class="error validationError" ng-show="userLogin.password.$invalid && userLogin.password.$touched">
-                         The password must be at least six characters</p>
-        </fieldset>
+                          <p class="error validationError" ng-show="userLogin.username.$invalid && userLogin.username.$touched">
+                          Please fill out your user name</p>
 
-        <button type="submit" ng-disabled="userLogin.$invalid" class="btn">Submit</button>
-</form>
-            <p>or <a ui-sref='user-profile.register'>signup</a></p>
+
+                    <input type="password"
+                         name="password" placeholder="Password"
+                         ng-model="user.password"
+                         ng-required="true"
+                         ng-minlength="6">
+
+                         <p class="error validationError" ng-show="userLogin.password.$invalid && userLogin.password.$touched">
+                           The password must be at least six characters</p>
+          </fieldset>
+
+          <button type="submit" ng-disabled="userLogin.$invalid" class="btn">Submit</button>
+  </form>
