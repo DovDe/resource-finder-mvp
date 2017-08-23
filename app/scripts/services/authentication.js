@@ -68,6 +68,9 @@ angular.module('resourceFinderMvpApp')
                                 });  //user info
                            $rootScope.message = "Hi" + user.firstname + ",Thanks for registering";
                            returnObject.login(user);
+                         }).then(function(user){
+                           $location.path('/main');
+                           $rootScope.message='';
                          }).catch(function(error){
                            $rootScope.message = error.message;
                          }); //createUserWithEmailAndPassword
