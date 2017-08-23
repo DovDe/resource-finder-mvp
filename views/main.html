@@ -12,10 +12,9 @@
 
                   <div class=" col-xl-12 col-lg-12 col-md-12 homeLink">
                     <div class="hello-user col-xl-12 col-lg-12 col-md-12 ">
-                      <p ng-show="currentUser">
-                         Hi {{currentUser.firstname}} <a ui-sref="user-profile"
-                          ng-click="logout()">Logout</a>
-                      </p>
+                      <p ng-show="currentUser"> Hi {{currentUser.firstname}}</p>
+                      <p ng-show="currentUser" class="logoutbtn"
+                       ng-click="vm.logout()"> &nbsp &nbsp Logout</>
                     </div>
 
                           <div class="col-xl-12 col-lg-12 col-md-12">

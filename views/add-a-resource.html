@@ -1,5 +1,5 @@
 <div ng-controller="AddAResourceCtrl">
-    <div class="container">
+    <div class="container" ng-hide="registering">
           <div class="row">
             <h1>Add A Resource</h1>
 
@@ -36,25 +36,99 @@
                                               ng-required="false" placeholder="Website">
                                        </div>
 
-                                       <div class="col-lg-12">
-                                         <h3>Resource Hours</h3>
-                                         <input type="text" name="resourcehours" ng-model="resource.hours"
-                                              ng-required="false" placeholder="Hours Open">
-                                       </div>
+
+                               </div>
+                               <div class="col-lg-6">
+                                 <h3>Resource Hours</h3>
+                                 <textarea type="text" name="resourcehours" ng-model="resource.hours"
+                                      ng-required="false" placeholder="Hours Open"></textarea>
+                               </div>
+
+                               <div class="col-lg-6">
+                                 <h3>Resource Description</h3>
+                                 <textarea name="resourcedescription"
+                                      ng-model="resource.description" ng-required="false">Description</textarea>
+                               </div>
+
+                               <div class="col-lg-6">
+                                 <h3>Resource Address</h3>
+                                  <div class="StateInput col-lg-4" >
+                                    <h4>Select a state</h4>
+                                    <select ng-model="resource.state">
+                                            	<option value="AL">Alabama</option>
+                                            	<option value="AK">Alaska</option>
+                                            	<option value="AZ">Arizona</option>
+                                            	<option value="AR">Arkansas</option>
+                                            	<option value="CA">California</option>
+                                            	<option value="CO">Colorado</option>
+                                            	<option value="CT">Connecticut</option>
+                                            	<option value="DE">Delaware</option>
+                                            	<option value="DC">District Of Columbia</option>
+                                            	<option value="FL">Florida</option>
+                                            	<option value="GA">Georgia</option>
+                                            	<option value="HI">Hawaii</option>
+                                            	<option value="ID">Idaho</option>
+                                            	<option value="IL">Illinois</option>
+                                            	<option value="IN">Indiana</option>
+                                            	<option value="IA">Iowa</option>
+                                            	<option value="KS">Kansas</option>
+                                            	<option value="KY">Kentucky</option>
+                                            	<option value="LA">Louisiana</option>
+                                            	<option value="ME">Maine</option>
+                                            	<option value="MD">Maryland</option>
+                                            	<option value="MA">Massachusetts</option>
+                                            	<option value="MI">Michigan</option>
+                                            	<option value="MN">Minnesota</option>
+                                            	<option value="MS">Mississippi</option>
+                                            	<option value="MO">Missouri</option>
+                                            	<option value="MT">Montana</option>
+                                            	<option value="NE">Nebraska</option>
+                                            	<option value="NV">Nevada</option>
+                                            	<option value="NH">New Hampshire</option>
+                                            	<option value="NJ">New Jersey</option>
+                                            	<option value="NM">New Mexico</option>
+                                            	<option value="NY">New York</option>
+                                            	<option value="NC">North Carolina</option>
+                                            	<option value="ND">North Dakota</option>
+                                            	<option value="OH">Ohio</option>
+                                            	<option value="OK">Oklahoma</option>
+                                            	<option value="OR">Oregon</option>
+                                            	<option value="PA">Pennsylvania</option>
+                                            	<option value="RI">Rhode Island</option>
+                                            	<option value="SC">South Carolina</option>
+                                            	<option value="SD">South Dakota</option>
+                                            	<option value="TN">Tennessee</option>
+                                            	<option value="TX">Texas</option>
+                                            	<option value="UT">Utah</option>
+                                            	<option value="VT">Vermont</option>
+                                            	<option value="VA">Virginia</option>
+                                            	<option value="WA">Washington</option>
+                                            	<option value="WV">West Virginia</option>
+                                            	<option value="WI">Wisconsin</option>
+                                            	<option value="WY">Wyoming</option>
+                                    </select>
+
+                                  </div>
+                                  <div class="col-lg-4">
+                                        <h4>What city</h4>
+                                        <input type="text" name="resourcecity" ng-model="resource.city"
+                                             ng-required="false" placeholder="resource city">
+
+                                 </div>
+                                 <div class="col-lg-4">
+                                   <h4>Formatted Address</h4>
+                                   <input type="text" name="formattedaddress" ng-model="resource.formatted_address"
+                                        ng-required="false" placeholder="{{NewResourceAddress}}" value="{{NewResourceAddress}}">
+
+                                 </div>
                                </div>
 
 
                                <div class="col-lg-6">
-                                 <h3>Resource Description</h3>
-                                 <textarea name="resourcedescription" rows="8" cols="50"
-                                      ng-model="resource.description" ng-required="false">Description</textarea>
-                               </div>
+                                 <h3>Resource Phone Number</h3>
 
-                               <div class="col-lg-12">
-                                 <h3>Resource Address</h3>
-
-                                 <input type="text" name="formattedaddress" ng-model="resource.formatted_address"
-                                      ng-required="false" placeholder="{{NewResourceAddress}}" value="{{NewResourceAddress}}">
+                                 <input type="tel" name="phonenumber" ng-model="resource.phone"
+                                      ng-required="false" placeholder="000-000-0000">
                                </div>
 
                              </fieldset>
