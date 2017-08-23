@@ -32,6 +32,7 @@ angular
       url: '/user-profile',
       templateUrl: 'views/user-profile.html',
       controller: 'UserProfileCtrl'
+
     })
     .state( 'main',{
       url: '/main',
@@ -43,12 +44,12 @@ angular
       }
     })
     .state( 'user-profile.register',{
-      url: '/user-profile.register',
+      url: '/user-profile/register',
       templateUrl: 'views/user-profile.register.html',
       controller: 'UserProfileCtrl'
     })
     .state( 'user-profile.login',{
-      url: '/user-profile.login',
+      url: '/user-profile/login',
       templateUrl: 'views/user-profile.login.html',
       controller: 'UserProfileCtrl'
     })
