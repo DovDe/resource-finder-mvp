@@ -6,10 +6,13 @@
 
 
           <fieldset>
-                    <input type="text" name="Email" placeholder="Email" ng-model="user.email"
-                          ng-required="true">
+                    <input type="email"
+                     name="email"
+                      placeholder="Email"
+                      ng-model="user.email"
+                      ng-required="true">
 
-                          <p class="error validationError" ng-show="userLogin.username.$invalid && userLogin.username.$touched">
+                          <p class="error validationError" ng-show="userLogin.email.$invalid && userLogin.email.$touched">
                           Please fill out your user name</p>
 
 

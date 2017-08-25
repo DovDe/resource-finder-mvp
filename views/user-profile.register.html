@@ -4,7 +4,7 @@
 
   <div class="text-intro">
         <h1>Register</h1>
-        <p ng-show="message">{{message}}</p>
+        <!-- <p ng-show="message">{{message}}</p> -->
   </div>
 
 
@@ -14,7 +14,7 @@
 
         <input type="text" name="firstname"
               placeholder="First Name"
-              ng-model="user.register.firstname"
+              ng-model="user.firstname"
               ng-required="true">
         <p class="error validationError" ng-show="signup.firstname.$invalid && signup.firstname.$touched">
           Please fill out your first name</p>
@@ -22,7 +22,7 @@
 
         <input type="text"
               name="lastname"  placeholder="Last Name"
-              ng-model="user.register.lastname"
+              ng-model="user.lastname"
               ng-required="true">
 
           <p class="error validationError" ng-show="signup.lastname.$invalid && signup.lastname.$touched">
@@ -32,14 +32,14 @@
         <input type="email"
               name="email"
               placeholder="Email"
-              ng-model="user.register.email"
+              ng-model="user.email"
               ng-required="true">
           <p ng-show="signup.email.$invalid && signup.email.$touched" class="error validationError">
             Please fill out a valid email</p>
 
         <input type="password"
              name="password" placeholder="Password"
-             ng-model="user.register.password"
+             ng-model="user.password"
              ng-required="true"
              ng-minlength="6">
          <p class="error validationError" ng-show="signup.password.$invalid && signup.password.$touched">
