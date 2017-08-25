@@ -17,6 +17,7 @@ angular.module('resourceFinderMvpApp')
     $rootScope.settingsIcon= "/images/settings.png";
 
         $scope.login= function(){
+          $rootScope.message='';
               authentication.login($scope.user);
         };
 

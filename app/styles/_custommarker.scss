@@ -38,8 +38,16 @@
       }
 #customthings{
   background: white;
+      // width: 40vw;
 }
 .custom-marker-innerdiv{
   padding: 5px;
   // margin: 2em;
+}
+.userProfileIcon-mainpage-custom-markerNav{
+  display: inline-block;
+  background: url("../images/user-profile.png") center center no-repeat;
+  background-size: cover;
+  width: 2em;
+  height: 2em;
 }

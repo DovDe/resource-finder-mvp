@@ -7,6 +7,8 @@
 @import "custommarker";
 @import "custommapcontrols";
 @import "infoWindow";
+@import "profilepage";
+
 html{
   margin: 0;
   padding: 0;
@@ -57,23 +59,23 @@ padding: 0;
 
 }
 .homeIcon{
-  margin: 0 3em 0 3em;
+  // margin: 0 3em 0 3em;
   display: inline-block;
   background: url("../images/home.png") center center no-repeat;
   background-size: cover;
-  width: 4em;
-  height: 4em;
+  width: 6em;
+  height: 6em;
 }
 .userProfileIcon{
-  margin: 0 3em 0 3em;
+  // margin: 0 3em 0 3em;
   display: inline-block;
   background: url("../images/user-profile.png") center center no-repeat;
   background-size: cover;
-  width: 4em;
-  height: 4em;
+  width: 6em;
+  height: 6em;
 }
 .settingsIcon{
-  margin: 1em 0.5em 0 0.5em;
+  // margin: 1em 0.5em 0 0.5em;
   display: inline-block;
   background: url("../images/settings.png") center center no-repeat;
   background-size: cover;

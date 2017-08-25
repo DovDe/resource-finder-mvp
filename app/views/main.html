@@ -2,80 +2,105 @@
 <div ng-controller="MainCtrl as vm">
 
   <ng-map class="map" default-style="false" center="seattle"
-      on-center-changed="vm.centerChanged()" map-type-control="false"
-      on-click="vm.placeMarker()" ng-disabled="inProgress" id="map">
+  on-center-changed="vm.centerChanged()" map-type-control="false"
+  on-click="vm.placeMarker()" ng-disabled="inProgress" id="map">
 
-        <custom-control  id="main-nav" position="TOP_CENTER"
-        style="width: 40vw; margin:0; padding:0; text-center" >
-          <div class="container">
-            <div class="row">
+      <custom-control position="TOP_CENTER"
+      style="width: 80vw; margin:0; padding:0; text-center">
+            <div class="container" id="top-control">
+                <div class="row">
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 main-view-message">
+                            <p class="hello-user" ng-show="currentUser">
+                               Hi {{currentUser.firstname}}</p>
+                            <p class="logout" ng-show="currentUser" ng-click="vm.logout()">
+                               &nbsp &nbsp Logout</p>
+                      </div>  <!--  close div column hello user message    -->
 
-                  <div class=" col-xl-12 col-lg-12 col-md-12 homeLink">
-                    <div class="hello-user col-xl-12 col-lg-12 col-md-12 ">
-                      <p ng-show="currentUser"> Hi {{currentUser.firstname}}</p>
-                      <p ng-show="currentUser" class="logoutbtn"
-                       ng-click="vm.logout()"> &nbsp &nbsp Logout</>
-                    </div>
+                      <div class="searchControl col-xl-12 col-lg-12 col-md-12" >
+                            <input places-auto-complete
+                              ng-model="vm.address"
+                              component-restrictions="{country:'us'}"
+                              on-place-changed="vm.placeChanged()"/>
 
-                          <div class="col-xl-12 col-lg-12 col-md-12">
-                            <a ui-sref="main" class="homeIcon">
-                            </a>
-                            <a ui-sref="user-profile" class="userProfileIcon">
-                              </a>
-                          </div>
-
-                  </div>
-
-
-              <div class="searchControl col-xl-12 col-lg-12 col-md-12" >
-                <input places-auto-complete
-                  ng-model="vm.address"
-                  component-restrictions="{country:'us'}"
-                  on-place-changed="vm.placeChanged()"
-                 />
-              </div>
-
-            </div>  <!--close row      -->
-          </div>   <!--close container      -->
+                      </div>  <!--close div column places auto complete     -->
+                </div>  <!--close row      -->
+              </div>   <!--close container      -->
 
         </custom-control>
 
+        <!-- close custom controler for hello message and place input -->
 
+
+        <!--  custom control to track lat lng  -->
         <custom-control position="TOP_LEFT">
           <div id="floating-panel">
           <input id="latlng" type="text"
            ng-model="vm.currentMarkerValue" ng-show="vm.hideinput">
           </div>
         </custom-control>
+        <!--  close lt lng tracker-->
 
-        <custom-control id="marker-filter" position="TOP_LEFT">
 
-              <div class="settingsIcon" id="markerSettingsBtn"
-               ng-click="vm.showMarkerFilters()"></div>
+        <custom-control id="marker-filter" position="BOTTOM"
+        style="width: 60vw; margin:0; padding:0; ">
+          <div class="container text-center">
+            <div class="row markerfilter" ng-show="vm.markerFilters">
+                  <div class="col-lg-12">
+                    <p class="filter-checkbox">Shelter <input type="checkbox" ><p>
+                    <p class="filter-checkbox">Water <input type="checkbox" ></p>
+                    <p class="filter-checkbox">Food <input type="checkbox"></p>
+                    <p class="filter-checkbox">Electricity <input type="checkbox"></p>
+                    <p class="filter-checkbox">Clothing <input type="checkbox"></p>
+                    <p class="filter-checkbox">Clean up <input type="checkbox"></p>
+                  </div>
+            </div>
 
-          <div class="markerfilter container" ng-show="vm.markerFilters">
-              <div class="row">
-                    <div class="col-lg-12">
-                      <p>Shelter <input type="checkbox" ><p>
-                      <p>Water <input type="checkbox" ></p>
-                      <p>Food <input type="checkbox"></p>
-                      <p>Electricity <input type="checkbox"></p>
-                      <p>Clothing <input type="checkbox"></p>
-                      <p>Clean up <input type="checkbox"></p>
-                    </div>
+            <div class="row">
+
+                  <div class="col-xs-4">
+                    <a ui-sref="main" class="homeIcon">
+                    </a>
+                  </div>
+              <div class="col-xs-4">
+                <a ui-sref="user-profile" class="userProfileIcon">
+                  </a>
               </div>
+              <div class="col-xs-4"
+               ng-click="vm.showMarkerFilters()">
+             <p class="settingsIcon" id="markerSettingsBtn"></p></div>
+
+            </div>
+
+
           </div>
+
+
+
 
 
         </custom-control>
 
           <custom-marker id="customthings" position="[{{lat}},{{lng}}]" >
+
                <div class="custom-marker-innerdiv">
-                    <p ng-click="vm.closeCustomMarker(); vm.reAble() "class="text-center">X</p>
-               </div>
-               <div class="custom-marker-innerdiv">
-                    <a ui-sref="add-a-resource">click here to add a resource</a>
-                </div>
+
+                 <div class="container">
+                    <div class="row text-center">
+                      <div class="col-xs-1">
+                        <p ng-click="vm.closeCustomMarker(); vm.reAble() ">X</p>
+                      </div>
+                      <div class="col-xs-11" ng-hide="currentUser">
+                        <a ui-sref="user-profile.login">To add a resource please login</a>
+
+                      </div>
+                      <div class="col-xs-" ng-show="currentUser">
+                           <a ui-sref="add-a-resource">click here to add a resource</a>
+                       </div>
+                    </div>
+                 </div>
+               </div> <!-- close custom-marker-innerdiv    -->
+
+
          </custom-marker>
 
          <marker ng-repeat="resource in vm.resourceMarkers"

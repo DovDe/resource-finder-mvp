@@ -8,7 +8,7 @@
  * Factory in the resourceFinderMvpApp.
  */
 angular.module('resourceFinderMvpApp')
-  .factory('authentication', function ( $rootScope, $location, $firebaseAuth, $firebaseObject) {
+  .factory('authentication', function ( $rootScope, $location, $firebaseAuth, $firebaseObject, $state, $timeout) {
     // Service logic
     // ...
     //
@@ -33,7 +33,11 @@ angular.module('resourceFinderMvpApp')
               user.email,
               user.password
             ).then(function(user){
-              $location.path('/main');
+              //go back to main  view
+              $timeout(function(){
+                    $state.go('main');
+                    $rootScope.message = '';
+              },500);  // close timeout
             }).catch(function(error){
               $rootScope.message = error.message;
             }); //  signInWithEmailAndPassword
@@ -53,24 +57,22 @@ angular.module('resourceFinderMvpApp')
 
                      // firebase authentication
                          auth.$createUserWithEmailAndPassword(
-                           user.register.email,
-                           user.register.password
+                           user.email,
+                           user.password
                          ).then(function(regUser)  {
                            var regRef = ref.child('users')
                                 .child(regUser.uid).set({
                                   date: firebase.database.ServerValue.TIMESTAMP,
                                   regUser: regUser.uid,
-                                  firstname: user.register.firstname,
-                                  lastname: user.register.lastname,
-                                  email: user.register.email,
-                                  password: user.register.password
+                                  firstname: user.firstname,
+                                  lastname: user.lastname,
+                                  email: user.email,
+                                  password: user.password
 
                                 });  //user info
+
                            $rootScope.message = "Hi" + user.firstname + ",Thanks for registering";
                            returnObject.login(user);
-                         }).then(function(user){
-                           $location.path('/main');
-                           $rootScope.message='';
                          }).catch(function(error){
                            $rootScope.message = error.message;
                          }); //createUserWithEmailAndPassword

@@ -15,7 +15,6 @@ angular.module('resourceFinderMvpApp')
        // get authentication
        var auth= $firebaseAuth();
 
-
    $scope.resourceaddress = $rootScope.NewResourceAddress;
    $scope.resourcelat =  $rootScope.currentMarkerLat;
    $scope.resourcelng=  $rootScope.currentMarkerLng;
@@ -24,6 +23,14 @@ angular.module('resourceFinderMvpApp')
    $rootScope.resource = resourceInfo;
 
 
+   $scope.resource.name = '';
+   $scope.resource.hours = '';
+   $scope.resource.description='';
+   $scope.resource.website='';
+   $scope.resource.state='';
+   $scope.resource.city='';
+   $scope.resource.phone='';
+   $rootScope.message='';
 
 
 // check to see if user is authenticated
@@ -31,13 +38,6 @@ angular.module('resourceFinderMvpApp')
            if (authUser){
 
 
-                $scope.resource.name = '';
-                $scope.resource.hours = '';
-                $scope.resource.description='';
-                $scope.resource.website='';
-                $scope.resource.state='';
-                $scope.resource.city='';
-                $scope.resource.phone='';
 
 
 
@@ -79,12 +79,11 @@ angular.module('resourceFinderMvpApp')
                         $scope.resource.hours = '';
                         $scope.resource.description = '';
                         $scope.resource.formatted_address = '';
-                        $scope.resource.location.state = '';
-                        $scope.resource.location.city = '';
-                        $scope.resource.location.state = '';
+                        $scope.resource.state = '';
+                        $scope.resource.city = '';
                         $scope.resource.phone = '';
 
-                        $scope.message = 'Thank for adding a resource';
+                        $scope.message = 'Thanks for adding a resource';
 
                         //go back to main  view
                         $timeout(function(){
