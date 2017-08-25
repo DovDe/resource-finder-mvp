@@ -44,12 +44,12 @@ angular
       }
     })
     .state( 'user-profile.register',{
-      url: '/user-profile/register',
+      url: '/register',
       templateUrl: 'views/user-profile.register.html',
       controller: 'UserProfileCtrl'
     })
     .state( 'user-profile.login',{
-      url: '/user-profile/login',
+      url: '/login',
       templateUrl: 'views/user-profile.login.html',
       controller: 'UserProfileCtrl'
     })
