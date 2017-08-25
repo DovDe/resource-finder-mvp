@@ -81,20 +81,9 @@ z-index: 11;
   background-size: cover;
   width: 4em;
   height: 4em;
+  position: relative;
   margin: 0.5em;
   padding: 0;
   float: left;
-}
-
-@media(max-width: 800px){
-  // .userProfileIcon{
-  //   width:4em;
-  //   height: 4em;
-  //
-  // }
-  // .homeIcon{
-  //   width: 4em;
-  //   height: 4em;
-  // }
-
+  z-index: 1000;
 }

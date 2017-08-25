@@ -1,51 +1,65 @@
-<form name="signup"
- ng-submit="register()"
- novalidate>
+<div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <form name="signup"
+           ng-submit="register()"
+           novalidate>
 
-  <div class="text-intro">
-        <h1>Register</h1>
-        <!-- <p ng-show="message">{{message}}</p> -->
-  </div>
+            <div class="text-intro col-xs-12 text-center">
+                  <h1>Register</h1>
+                  <!-- <p ng-show="message">{{message}}</p> -->
+            </div>
 
-
-  <fieldset>
-
-
-
-        <input type="text" name="firstname"
-              placeholder="First Name"
-              ng-model="user.firstname"
-              ng-required="true">
-        <p class="error validationError" ng-show="signup.firstname.$invalid && signup.firstname.$touched">
-          Please fill out your first name</p>
+            <div class="col-xs-12">
+              <fieldset>
 
 
-        <input type="text"
-              name="lastname"  placeholder="Last Name"
-              ng-model="user.lastname"
-              ng-required="true">
 
-          <p class="error validationError" ng-show="signup.lastname.$invalid && signup.lastname.$touched">
-            Please fill out your last name</p>
+                    <input type="text" name="firstname"
+                          placeholder="First Name"
+                          ng-model="user.firstname"
+                          ng-required="true"
+                          class="col-xs-12">
+                    <p class="error validationError col-xs-12" ng-show="signup.firstname.$invalid && signup.firstname.$touched">
+                      Please fill out your first name</p>
 
 
-        <input type="email"
-              name="email"
-              placeholder="Email"
-              ng-model="user.email"
-              ng-required="true">
-          <p ng-show="signup.email.$invalid && signup.email.$touched" class="error validationError">
-            Please fill out a valid email</p>
+                    <input type="text"
+                          name="lastname"  placeholder="Last Name"
+                          ng-model="user.lastname"
+                          ng-required="true"
+                          class="col-xs-12">
 
-        <input type="password"
-             name="password" placeholder="Password"
-             ng-model="user.password"
-             ng-required="true"
-             ng-minlength="6">
-         <p class="error validationError" ng-show="signup.password.$invalid && signup.password.$touched">
-           The password must be at least six characters</p>
+                      <p class="error validationError col-xs-12" ng-show="signup.lastname.$invalid && signup.lastname.$touched">
+                        Please fill out your last name</p>
 
-  </fieldset>
 
-  <button type="submit" ng-disabled="signup.$invalid" class="btn">Submit</button>
-</form>
+                    <input type="email"
+                          name="email"
+                          placeholder="Email"
+                          ng-model="user.email"
+                          ng-required="true"
+                          class="col-xs-12">
+                      <p ng-show="signup.email.$invalid && signup.email.$touched" class="error col-xs-12 validationError">
+                        Please fill out a valid email</p>
+
+                    <input type="password"
+                         name="password" placeholder="Password"
+                         ng-model="user.password"
+                         ng-required="true"
+                         ng-minlength="6"
+                         class="col-xs-12">
+                     <p class="error validationError col-xs-12" ng-show="signup.password.$invalid && signup.password.$touched">
+                       The password must be at least six characters</p>
+
+              </fieldset>
+            </div>
+
+            <div class="col-xs-12">
+              <button type="submit" ng-disabled="signup.$invalid" class="btn col-xs-12">Submit</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+</div>

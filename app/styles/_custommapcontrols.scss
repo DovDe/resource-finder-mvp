@@ -16,7 +16,7 @@ custom-control{
 }
 
 #custom-control-marker-filter{
-  background: rgba(220,230,245,0.5);
+  background: rgba(240,240,240,0.7);
 
   margin: 0;
   padding: 0;
@@ -43,7 +43,7 @@ custom-control{
 .hello-user{
   font-size: 1.5em;
   display: inline;
-  float: left;
+  // float: left;
 
 }
 
@@ -51,7 +51,7 @@ custom-control{
   font-size: 1.5em;
 
   display: inline;
-  float: left;
+  // float: left;
   color: blue;
 }
 .main-view-message{
@@ -59,8 +59,8 @@ custom-control{
 
 }
 #top-control{
-  background: rgba(220,230,245,0.5);
-  border-radius: 10px;
+  background: rgba(240,240,240,0.7);
+  border-radius: 15px;
   // padding: 2em;
   // margin: 1em 0 0 0;
     .row{
@@ -87,7 +87,7 @@ custom-control{
     }
     input{
       display: inline;
-      float: left;
+      // float: left;
       margin: 0;
       padding: 0;
     }
