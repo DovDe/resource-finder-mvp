@@ -1,12 +1,16 @@
 .custom-marker {
         font-size: 1.5em;
-        padding: 10px;
-        background: #fff;
+        // padding: 10px;
+        background: rgba(0,0,0,0.3);
         -webkit-border-radius: 4px;
         -moz-border-radius: 4px;
         border-radius: 4px;
         border: #7F7F7F solid 1px;
         display: block;
+        color: white;
+        min-width: 30vw;
+        max-width: 60vw;
+
       }
 
       .custom-marker:after {
@@ -20,7 +24,8 @@
         z-index: 1;
         margin-left: -6px;
         bottom: -6px;
-        left: 50%;
+        // left: 50%;
+        display: none;
       }
 
       .custom-marker:before {
@@ -32,22 +37,29 @@
         display: block;
         width: 0;
         z-index: 0;
+        color: white;
         margin-left: -6px;
         bottom: -7px;
-        left: 50%;
+        display: none;
+        // left: 50%;
       }
-#customthings{
-  background: white;
-      // width: 40vw;
-}
+
 .custom-marker-innerdiv{
-  padding: 5px;
-  // margin: 2em;
+  // padding: 5px;
+  // position: relative;
+  display: block;
+      div{
+        width: 100%;
+      }
+      a{
+        color: white;
+        font-size: 1.2em;
+      }
 }
-.userProfileIcon-mainpage-custom-markerNav{
-  display: inline-block;
-  background: url("../images/user-profile.png") center center no-repeat;
-  background-size: cover;
-  width: 2em;
-  height: 2em;
-}
+// .userProfileIcon-mainpage-custom-markerNav{
+//   display: inline-block;
+//   background: url("../images/user-profile.png") center center no-repeat;
+//   background-size: cover;
+//   width: 2em;
+//   height: 2em;
+// }

@@ -12,19 +12,19 @@ custom-control{
     width: 100%;
 
   }
-  img{
-    height: 6vh;
-    margin: 0;
-    padding: 0;
-  }
+
 }
 
-#marker-filter{
-  text-align: left;
+#custom-control-marker-filter{
   background: rgba(220,230,245,0.5);
 
   margin: 0;
-  padding: 1em 0;
+  padding: 0;
+
+    div{
+      margin: 0;
+      padding: 0;
+    }
 }
 
 
@@ -61,8 +61,8 @@ custom-control{
 #top-control{
   background: rgba(220,230,245,0.5);
   border-radius: 10px;
-  padding: 2em;
-  margin: 1em 0 0 0;
+  // padding: 2em;
+  // margin: 1em 0 0 0;
     .row{
       margin: 0;
       padding: 0;
@@ -74,4 +74,21 @@ custom-control{
   display: inline;
   float: left;
   // bottom: 1em;
+}
+.markerfilters{
+    padding: 0;
+    margin: 0;
+    p{
+      display: inline;
+      float: left;
+      font-size: 1.5em;
+      margin: 0;
+      padding: 0em 0.3em;
+    }
+    input{
+      display: inline;
+      float: left;
+      margin: 0;
+      padding: 0;
+    }
 }
