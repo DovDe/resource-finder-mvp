@@ -9,19 +9,21 @@
             <div class="container" id="top-control">
                 <div class="row">
                       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 main-nav">
-                        <div class="col-xs-3">
+                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
                           <a ui-sref="main" class="homeIcon">
                           </a>
-                        </div>
-                        <div class="col-xs-3">
                           <a ui-sref="user-profile" class="userProfileIcon">
                           </a>
                         </div>
-                        <div class="col-xs-6">
+
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                           <p class="hello-user" ng-show="currentUser">
                              Hi {{currentUser.firstname}}</p>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
                           <p class="logout" ng-show="currentUser" ng-click="vm.logout()">
-                             &nbsp &nbsp Logout</p>
+                            Logout</p>
                         </div>
 
                       </div>  <!--  close div column hello user message    -->
