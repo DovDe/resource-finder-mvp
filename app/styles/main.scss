@@ -57,32 +57,33 @@ input.ng-valid.ng-touched {
   display: inline-block;
   background: url("../images/home.png") center center no-repeat;
   background-size: cover;
-  width: 4em;
-  height: 4em;
+  width: 3em;
+  height: 3em;
   z-index: 10;
   padding: 0;
-  margin: 1em 3em 1em 0;
+  float: left;
+  // margin: 1em 3em 1em 0;
 }
 .userProfileIcon{
   padding: 0;
-  margin: 1em 3em 1em 0;
+  // margin: 1em 3em 1em 0;
   position: relative;
   display: inline-block;
   background: url("../images/user-profile.png") center center no-repeat;
-  background-size: cover;
-  width: 4em;
-  height: 4em;
+  background-size: contain;
+  width: 3em;
+  height: 3em;
 z-index: 11;
+float: left;
 }
 .settingsIcon{
   // margin: 1em 0.5em 0 0.5em;
   display: inline-block;
   background: url("../images/settings.png") center center no-repeat;
-  background-size: cover;
-  width: 4em;
-  height: 4em;
+  background-size: contain;
+  width: 3em;
+  height: 3em;
   position: relative;
-  margin: 0.5em;
   padding: 0;
   float: left;
   z-index: 1000;
